@@ -2,7 +2,7 @@
 /** AUTOMATISCH ERZEUGT aus themes/core/options.json (php bin/build-themes.php). Nicht von Hand ändern. */
 
 return [
-    'version' => '0.2.0',
+    'version' => '0.3.0',
     'groups' => [
         'colors' => [
             'label' => 'Farben',
@@ -51,6 +51,10 @@ return [
         'performance' => [
             'label' => 'Geschwindigkeit',
             'help' => 'Ladezeit',
+        ],
+        'license' => [
+            'label' => 'Lizenz',
+            'help' => 'Pro-Funktionen werden mit gültiger Lizenz automatisch freigeschaltet. Kauf und Verwaltung unter https://theme.michael-gahn.de (Konto erforderlich).',
         ],
         'advanced' => [
             'label' => 'Erweitert',
@@ -666,6 +670,15 @@ return [
             'label' => 'Haupt-Schrift vorladen',
             'help' => '',
             'default' => true,
+        ],
+        'license_token' => [
+            'key' => 'mt-license-token',
+            'group' => 'license',
+            'type' => 'text',
+            'mode' => 'simple',
+            'label' => 'Lizenzschlüssel',
+            'help' => 'Den Schlüssel finden Sie im Kundenkonto unter https://theme.michael-gahn.de. Zur Prüfung werden nur der Schlüssel und die Domain dieses Shops an den Lizenzserver übertragen (Server-zu-Server, keine Besucherdaten). Ohne Schlüssel läuft das Theme mit allen Free-Funktionen.',
+            'default' => '',
         ],
         'custom_css' => [
             'key' => 'mt-custom-css',

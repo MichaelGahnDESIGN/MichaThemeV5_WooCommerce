@@ -20,6 +20,9 @@ function mt_opt(string $id)
         return null;
     }
     $v = get_theme_mod($o['key'], $o['default']);
+    if ($o['type'] === 'code') {
+        return is_string($v) ? $v : ''; // Beim Speichern bereinigt, Ausgabe nur mit Pro-Lizenz (inc/license.php).
+    }
 
     return mt_sanitize_value($o, $v);
 }
@@ -40,7 +43,8 @@ function mt_sanitize_value(array $o, $v)
         case 'media':
             return esc_url_raw((string) $v);
         case 'code':
-            return ''; // Eigener Code erst mit Pro-Lizenzprüfung.
+            // Nur Konten mit Recht für ungefiltertes HTML dürfen Code speichern.
+            return is_string($v) && function_exists('current_user_can') && current_user_can('unfiltered_html') ? $v : '';
         default:
             return sanitize_text_field((string) $v);
     }
