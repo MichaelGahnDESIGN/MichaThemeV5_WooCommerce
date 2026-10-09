@@ -47,10 +47,15 @@ add_action('customize_register', function (WP_Customize_Manager $wp): void {
                 $wp->add_control(new WP_Customize_Image_Control($wp, $o['key'], $ctl));
                 break;
             case 'code':
-                $ctl['description'] = 'Verfügbar mit dem Pro-Modul Eigener Code (gültige Lizenz erforderlich). Siehe https://theme.michael-gahn.de';
-                $wp->add_control($o['key'], $ctl + ['type' => 'textarea', 'input_attrs' => ['disabled' => 'disabled']]);
+                $ctl['description'] = mt_pro('custom-code')
+                    ? 'Pro-Modul Eigener Code ist freigeschaltet. Externe Skripte können eine Einwilligung der Besucher erfordern.'
+                    : 'Verfügbar mit dem Pro-Modul Eigener Code (gültige Lizenz erforderlich). Siehe https://theme.michael-gahn.de';
+                $wp->add_control($o['key'], $ctl + ['type' => 'textarea']);
                 break;
             default:
+                if ($id === 'license_token') {
+                    $ctl['description'] = mt_license_status_text() . ' ' . $o['help'];
+                }
                 $wp->add_control($o['key'], $ctl + ['type' => 'text']);
         }
     }
