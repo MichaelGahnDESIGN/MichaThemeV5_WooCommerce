@@ -44,7 +44,11 @@ function mt_sanitize_value(array $o, $v)
             return esc_url_raw((string) $v);
         case 'code':
             // Nur Konten mit Recht für ungefiltertes HTML dürfen Code speichern.
-            return is_string($v) && function_exists('current_user_can') && current_user_can('unfiltered_html') ? $v : '';
+            if (is_string($v) && function_exists('current_user_can') && current_user_can('unfiltered_html')) {
+                return $v;
+            }
+
+            return (string) get_theme_mod($o['key'], ''); // ohne Recht: vorhandenen Code nicht überschreiben
         default:
             return sanitize_text_field((string) $v);
     }
