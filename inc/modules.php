@@ -115,3 +115,15 @@ add_action('woocommerce_single_product_summary', function (): void {
         esc_attr($until ? $until->date('c') : '')
     );
 }, 11);
+
+/* ---- Liefer- und Versandanzeige (nur lieferbare Artikel, Schätzung aus den Theme-Einstellungen) ---- */
+add_action('woocommerce_single_product_summary', function (): void {
+    if (!isset(mt_modules_config()['lieferanzeige'])) {
+        return;
+    }
+    global $product;
+    if (!$product instanceof WC_Product || !$product->is_in_stock() || $product->is_on_backorder() || $product->is_virtual() || $product->is_downloadable()) {
+        return;
+    }
+    echo '<div data-mt-delivery></div>';
+}, 27);
