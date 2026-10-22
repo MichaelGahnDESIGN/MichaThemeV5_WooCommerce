@@ -663,6 +663,121 @@
             "label": "Lizenzschlüssel",
             "default": "",
             "help": "Den Schlüssel finden Sie im Kundenkonto unter https://theme.michael-gahn.de. Zur Prüfung werden nur der Schlüssel und die Domain dieses Shops an den Lizenzserver übertragen (Server-zu-Server, keine Besucherdaten). Ohne Schlüssel läuft das Theme mit allen Free-Funktionen."
+        },
+        {
+            "id": "legal_shipping_time",
+            "group": "legal",
+            "type": "text",
+            "mode": "simple",
+            "label": "Lieferzeit",
+            "default": "Lieferzeit: 2–4 Werktage",
+            "help": "Standard für alle Artikel, je Artikel überschreibbar mit dem Custom Field _mt_delivery_time (Text). Leer = keine Angabe. Ist Germanized oder German Market aktiv, zeigt das Theme nichts, damit die Lieferzeit nicht doppelt erscheint."
+        },
+        {
+            "id": "legal_lowest_price",
+            "group": "legal",
+            "type": "select",
+            "mode": "simple",
+            "label": "Niedrigster Preis der letzten 30 Tage bei Streichpreisen",
+            "default": "field",
+            "help": "WooCommerce speichert keinen Preisverlauf. Den Wert pflegen Sie je Artikel im Custom Field _mt_lowest_price_30 (Zahl, z. B. 19.90). Fehlt er bei einem Streichpreis, erscheint nur für angemeldete Shop-Verwalter ein Hinweis. Technischer Hinweis, keine Rechtsberatung.",
+            "choices": {
+                "field": "Aus Custom Field anzeigen",
+                "off": "Nicht anzeigen"
+            }
+        },
+        {
+            "id": "legal_warranty",
+            "group": "legal",
+            "type": "toggle",
+            "mode": "simple",
+            "label": "Hinweis zur gesetzlichen Gewährleistung",
+            "default": true,
+            "help": "Auf der Artikelseite und im Warenkorb."
+        },
+        {
+            "id": "legal_warranty_text",
+            "group": "legal",
+            "type": "text",
+            "mode": "simple",
+            "label": "Text zur Gewährleistung",
+            "default": "Für alle Artikel gilt die gesetzliche Gewährleistung (Mängelhaftung) von mindestens zwei Jahren.",
+            "help": "Textvorschlag, rechtlich prüfen lassen.",
+            "input": "textarea"
+        },
+        {
+            "id": "legal_gpsr",
+            "group": "legal",
+            "type": "toggle",
+            "mode": "simple",
+            "label": "Produktsicherheit (GPSR) auf der Artikelseite",
+            "default": true,
+            "help": "Liest die Custom Fields _mt_gpsr_manufacturer (Hersteller), _mt_gpsr_responsible_person (verantwortliche Person in der EU), _mt_gpsr_contact (Kontakt) und _mt_gpsr_safety_info (Sicherheitshinweise). Ohne Werte erscheint nichts. Über den Filter mt_gpsr_data lassen sich die Felder von Germanized oder German Market anbinden."
+        },
+        {
+            "id": "legal_withdrawal_link",
+            "group": "legal",
+            "type": "select",
+            "mode": "simple",
+            "label": "Widerrufs-Link",
+            "default": "page",
+            "help": "Seite = die Seite unten, WooCommerce Order withdrawal = Konto-Endpunkt ab WooCommerce 11.1 (Feature unter Einstellungen › Erweitert › Funktionen einschalten). Bei Germanized oder German Market deren Seite wählen. Den Bestellbutton beschriftet die Kasse bzw. das Rechtsplugin (Button-Lösung § 312j BGB), nicht das Theme. Technischer Hinweis, keine Rechtsberatung.",
+            "choices": {
+                "page": "Seite (unten wählen)",
+                "native": "WooCommerce Order withdrawal",
+                "off": "Nicht anzeigen"
+            }
+        },
+        {
+            "id": "legal_withdrawal_page",
+            "group": "legal",
+            "type": "text",
+            "mode": "simple",
+            "label": "Seite „Vertrag widerrufen“",
+            "default": "",
+            "help": "Wird im Footer und im Konto verlinkt. Die Seite sollte die Widerrufsfunktion enthalten.",
+            "input": "page"
+        },
+        {
+            "id": "legal_video_2click",
+            "group": "legal",
+            "type": "toggle",
+            "mode": "simple",
+            "label": "Videos von YouTube und Vimeo erst nach Klick laden",
+            "default": true,
+            "help": "Eingebettete Videos (Block „Einbettung“, Shortcode [mt_video url=\"…\"]) werden durch einen Platzhalter ersetzt. Erst nach dem Klick lädt das Theme das Video (YouTube über youtube-nocookie, Vimeo mit dnt=1). Vorher wird nichts von Dritten geladen. Kein Cookie-Banner im Theme."
+        },
+        {
+            "id": "legal_consent_button",
+            "group": "legal",
+            "type": "toggle",
+            "mode": "simple",
+            "label": "Button „Cookie-Einstellungen“ im Footer",
+            "default": false,
+            "help": "Erscheint nur, wenn ein Consent-Manager meldet, dass er da ist (window.mtConsentProvider = true oder Ereignis mt:consent-ready). Ein Klick sendet das Ereignis mt:consent-open."
+        },
+        {
+            "id": "soldout_display",
+            "group": "listing",
+            "type": "select",
+            "mode": "simple",
+            "label": "Ausverkaufte Artikel in Listen",
+            "default": "mark",
+            "help": "Auf der Artikelseite bleibt ein ausverkaufter Artikel erreichbar und gekennzeichnet, der Kaufbutton ist deaktiviert. Ausblenden betrifft nur Listen und Suche.",
+            "choices": {
+                "mark": "Anzeigen und kennzeichnen",
+                "hide": "In Listen ausblenden"
+            }
+        },
+        {
+            "id": "a11y_statement_page",
+            "group": "a11y",
+            "type": "text",
+            "mode": "simple",
+            "label": "Seite Barrierefreiheitserklärung",
+            "default": "",
+            "help": "Wird im Footer verlinkt.",
+            "input": "page"
         }
     ]
 }

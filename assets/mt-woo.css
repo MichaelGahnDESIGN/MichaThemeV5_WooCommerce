@@ -84,3 +84,9 @@
 .site-footer__copy { color: var(--mt-text-muted); font-size: var(--mt-text-sm); }
 
 .mt-hero--image { background-size: cover; }
+
+/* Block-Kasse / Block-Warenkorb Buttons mitstylen */
+.wc-block-components-button:not(.is-link):hover, .wc-block-components-button:not(.is-link):focus-visible { background: var(--mt-accent-hover); border-color: var(--mt-accent-hover); color: var(--mt-on-accent); }
+.wc-block-components-button:not(.is-link):focus-visible { outline: var(--mt-focus-width) solid var(--mt-focus); outline-offset: 2px; }
+.wc-block-components-button:not(.is-link) .wc-block-components-button__text { color: inherit; }
+.wc-block-components-button:disabled { opacity: .6; }
