@@ -47,6 +47,14 @@ add_action('customize_register', function (WP_Customize_Manager $wp): void {
                 $wp->add_control(new WP_Customize_Image_Control($wp, $o['key'], $ctl));
                 break;
             default:
+                if (($o['input'] ?? '') === 'page') {
+                    $wp->add_control($o['key'], $ctl + ['type' => 'dropdown-pages', 'allow_addition' => false]);
+                    break;
+                }
+                if (($o['input'] ?? '') === 'textarea') {
+                    $wp->add_control($o['key'], $ctl + ['type' => 'textarea']);
+                    break;
+                }
                 if ($id === 'license_token') {
                     $ctl['description'] = mt_license_status_text() . ' ' . $o['help'];
                 }

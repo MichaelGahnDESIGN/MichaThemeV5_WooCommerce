@@ -10,8 +10,8 @@ add_action('after_setup_theme', function (): void {
 
 /** Pflichtangabe neben dem Preis (PAngV): Hinweistext, optional mit Link auf eine Seite "versandkosten". */
 add_filter('woocommerce_get_price_html', function ($html, $product) {
-    if ($html === '' || is_admin()) {
-        return $html;
+    if ($html === '' || is_admin() || mt_legal_plugin_active()) {
+        return $html; // Germanized / German Market setzen den Hinweis selbst
     }
     $note = mt_opt('legal_price_note');
     if ($note === '') {
