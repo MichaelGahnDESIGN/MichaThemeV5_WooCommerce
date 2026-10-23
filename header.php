@@ -26,6 +26,7 @@ defined('ABSPATH') || exit;
         </nav>
         <div class="site-header__tools">
             <?php get_search_form(); ?>
+            <?php mt_notification_center_render('menu'); ?>
             <?php if (function_exists('wc_get_cart_url')) : ?>
                 <a class="mt-cart-link" href="<?php echo esc_url(wc_get_cart_url()); ?>" aria-label="Warenkorb">
                     <span aria-hidden="true">🛒</span> <span class="mt-cart-count"><?php echo WC()->cart ? (int) WC()->cart->get_cart_contents_count() : 0; ?></span>

@@ -20,8 +20,10 @@ if (mt_opt('footer_trust') && $trust) : ?>
             <?php wp_nav_menu(['theme_location' => 'footer', 'container' => false, 'menu_class' => 'mt-menu mt-menu--footer', 'fallback_cb' => false]); ?>
         </nav>
         <p class="site-footer__copy">&copy; <?php echo esc_html(gmdate('Y')); ?> <?php bloginfo('name'); ?></p>
+        <?php mt_notification_center_render('footer'); ?>
     </div>
 </footer>
 <?php wp_footer(); ?>
+<?php foreach (['floating-top-left', 'floating-top-right', 'floating-bottom-left', 'floating-bottom-right'] as $placement) { mt_notification_center_render($placement); } ?>
 </body>
 </html>
