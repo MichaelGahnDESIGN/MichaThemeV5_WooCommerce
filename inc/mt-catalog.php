@@ -691,7 +691,7 @@ return [
             'type' => 'select',
             'mode' => 'simple',
             'label' => 'Niedrigster Preis der letzten 30 Tage bei Streichpreisen',
-            'help' => 'WooCommerce speichert keinen Preisverlauf. Den Wert pflegen Sie je Artikel im Custom Field _mt_lowest_price_30 (Zahl, z. B. 19.90). Fehlt er bei einem Streichpreis, erscheint nur für angemeldete Shop-Verwalter ein Hinweis. Technischer Hinweis, keine Rechtsberatung.',
+            'help' => 'WooCommerce speichert keine Preishistorie. Den Wert pflegen Sie je Artikel im Custom Field _mt_lowest_price_30 (Zahl, z. B. 19.90). Fehlt er bei einem Streichpreis, erscheint nur für angemeldete Shop-Verwalter ein Hinweis. Technischer Hinweis, keine Rechtsberatung.',
             'default' => 'field',
             'choices' => [
                 'field' => 'Aus Custom Field anzeigen',

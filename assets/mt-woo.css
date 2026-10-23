@@ -43,6 +43,8 @@
 @media (min-width: 1200px) { .woocommerce ul.products { grid-template-columns: repeat(var(--mt-listing-cols), minmax(0, 1fr)); } }
 .woocommerce ul.products::before, .woocommerce ul.products::after { display: none; }
 .woocommerce ul.products li.product { width: auto; margin: 0; float: none; background: var(--mt-surface); border: 1px solid var(--mt-border); border-radius: var(--mt-r-lg); box-shadow: var(--mt-shadow); padding: 0 0 var(--mt-gap); overflow: hidden; position: relative; transition: transform .2s ease, box-shadow .2s ease; }
+/* Woo layout.css Breite 22% platt machen, sonst Karten ~100px schmal */
+.woocommerce ul.products[class*="columns-"] li.product, .woocommerce-page ul.products[class*="columns-"] li.product { width: auto; float: none; clear: none; margin: 0; }
 .woocommerce ul.products li.product:hover { transform: translateY(-2px); box-shadow: var(--mt-shadow-md); }
 :root[data-mt-listing="large"] .woocommerce ul.products { grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr)); }
 :root[data-mt-listing="list"] .woocommerce ul.products { grid-template-columns: 1fr; }
