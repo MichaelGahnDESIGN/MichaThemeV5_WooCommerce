@@ -82,7 +82,7 @@ function mt_fav_header_html(): string
     }
 
     return '<div class="mt-hdr-item mt-hdr-item--favs" data-mt-fav-item hidden>'
-        . '<button type="button" class="mt-icon-link" data-mt-fav-open aria-expanded="false" aria-controls="mt-fav-panel" data-label-count="' . esc_attr__('Favoriten, %s Einträge', 'michathemev5') . '" aria-label="' . esc_attr__('Favoriten', 'michathemev5') . '">'
+        . '<button type="button" class="mt-icon-link" data-mt-fav-open aria-expanded="false" aria-controls="mt-fav-panel" data-label-count="' . esc_attr__('Favoriten, %s Einträge', 'michathemev5') . '" data-label-count-one="' . esc_attr__('Favoriten, %s Eintrag', 'michathemev5') . '" aria-label="' . esc_attr__('Favoriten', 'michathemev5') . '">'
         . mt_icon('heart') . '<span class="mt-list-count" data-mt-fav-count aria-hidden="true">0</span></button>'
         . '<section id="mt-fav-panel" class="mt-fav-panel" data-mt-fav-panel data-label-remove="' . esc_attr__('Aus Favoriten entfernen: %s', 'michathemev5') . '" aria-label="' . esc_attr__('Favoriten', 'michathemev5') . '" hidden><ul class="mt-fav-list" data-mt-fav-list></ul></section>'
         . '</div>';
