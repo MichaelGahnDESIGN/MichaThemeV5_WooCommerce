@@ -2,6 +2,24 @@
 
 Hier steht, was sich von Version zu Version geändert hat. Das Theme ist noch in einer frühen Phase (Pre-Alpha). Bitte nicht in einem echten Shop einsetzen, ohne es vorher selbst zu testen.
 
+## 0.4.0 (28.10.2026, Pre-Alpha)
+
+Neue Symbol-Leiste im Kopfbereich.
+
+**Neu**
+
+- Die Leiste im Kopfbereich zeigt von links nach rechts: Hell/Dunkel-Schalter, Benachrichtigungen (Glocke), Merkliste, Favoriten, Konto, Warenkorb. Die Suche bleibt in der Mitte.
+- Der Hell/Dunkel-Schalter ist im Kopfbereich nur noch ein Symbol (kein Text mehr). Welcher Modus gerade gilt, steht im Tooltip und für Screenreader im Label.
+- Neue Einstellung im Customizer (Farben): „Ort des Hell/Dunkel-Schalters“. Zur Wahl stehen Header, Footer und Benutzerkonto-Einstellungen. Der Schalter erscheint nur am gewählten Ort. Im Konto steht er unter dem Konto-Menü und ist nur für eingeloggte Kunden sichtbar.
+- Favoriten: Auf Produktkarten (Shop, Suche, verwandte Produkte) und auf der Artikelseite gibt es ein Herz. Die Liste wird nur im Browser des Besuchers gespeichert und nicht an den Shop gesendet. Das Favoriten-Symbol im Kopfbereich erscheint erst, wenn mindestens ein Favorit da ist. Abschalten geht im Customizer (Kopfbereich, „Favoriten“).
+- Die Glocke erscheint nur, wenn das Plugin MGD Notification Center wirklich Einträge liefert. Sie sieht jetzt wie die anderen Symbole aus (Linien-Glocke statt Emoji, neutraler Zähler).
+- Zähler an Merkliste und Favoriten sind neutral grau. Nur der Warenkorb-Zähler bleibt in der Akzentfarbe.
+
+**Gut zu wissen**
+
+- WooCommerce hat von sich aus keine Merkliste. Das Merkliste-Symbol erscheint nur, wenn „YITH WooCommerce Wishlist“ oder „TI WooCommerce Wishlist“ aktiv ist. Sonst fehlt es einfach. Die Zahl wird beim Laden der Seite ermittelt (bei Seiten-Zwischenspeichern kann sie kurz alt sein).
+- Die Glocke bleibt bei 0 Einträgen auf allen Plätzen (Kopfbereich, Footer, schwebend) unsichtbar.
+
 ## 0.3.1 (28.10.2026, Pre-Alpha)
 
 Kleine Korrektur zu 0.3.0.

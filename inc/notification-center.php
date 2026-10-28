@@ -24,7 +24,12 @@ function mt_notification_center_render(string $placement): void {
     if (!mt_notification_center_available() || mt_notification_center_placement() !== $placement) {
         return;
     }
-    echo do_shortcode('[mgd_notification_center placement="' . esc_attr($placement) . '"]'); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+    // Wrapper bleibt hidden bis das Plugin echte Einträge liefert (assets/mt-woo.js)
+    $markup = do_shortcode('[mgd_notification_center placement="' . esc_attr($placement) . '"]');
+    // Emoji-Glocke aus dem Plugin gegen Linien-Icon tauschen (wie die anderen Symbole)
+    $markup = str_replace('<span aria-hidden="true">🔔</span>', mt_icon('bell'), $markup);
+    $class = $placement === 'menu' ? 'mt-hdr-item mt-hdr-item--notify' : 'mt-notify-wrap';
+    echo '<div class="' . esc_attr($class) . '" data-mt-notify-item hidden>' . $markup . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 }
 
 /** Das Theme übernimmt die sichtbare Platzierung und verhindert eine doppelte Plugin-Glocke. */

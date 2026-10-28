@@ -2,7 +2,7 @@
 /** AUTOMATISCH ERZEUGT aus themes/core/options.json (php bin/build-themes.php). Nicht von Hand ändern. */
 
 return [
-    'version' => '0.3.1',
+    'version' => '0.4.0',
     'groups' => [
         'colors' => [
             'label' => 'Farben',
@@ -106,9 +106,24 @@ return [
             'group' => 'colors',
             'type' => 'toggle',
             'mode' => 'simple',
-            'label' => 'Umschalter Hell/Dunkel im Header anzeigen',
-            'help' => '',
+            'label' => 'Umschalter Hell/Dunkel anzeigen',
+            'help' => 'Aus = es gibt keinen Umschalter im Shop. Wo er steht, wählen Sie darunter.',
             'default' => true,
+        ],
+        'mode_toggle_place' => [
+            'key' => 'mt-mode-toggle-place',
+            'group' => 'colors',
+            'type' => 'select',
+            'mode' => 'simple',
+            'label' => 'Ort des Hell/Dunkel-Schalters',
+            'help' => 'Header = Symbol in der Icon-Leiste (Standard). Footer = Zeile im Fußbereich. Benutzerkonto = Eintrag im Kundenkonto, wo die Plattform das zulässt.',
+            'default' => 'header',
+            'attr' => 'data-mt-mode-place',
+            'choices' => [
+                'header' => 'Header',
+                'footer' => 'Footer',
+                'account' => 'Benutzerkonto-Einstellungen',
+            ],
         ],
         'font_body' => [
             'key' => 'mt-font-body',
@@ -337,6 +352,16 @@ return [
             'label' => 'Text der Ankündigungsleiste',
             'help' => 'Leer = keine Meldung. Bitte nur belegbare Aussagen verwenden (UWG), zum Beispiel eine Versandgrenze nur, wenn sie im Shop wirklich gilt.',
             'default' => '',
+        ],
+        'favorites' => [
+            'key' => 'mt-favorites',
+            'group' => 'header',
+            'type' => 'toggle',
+            'mode' => 'simple',
+            'label' => 'Favoriten (Herz-Liste) anzeigen',
+            'help' => 'Besucher können Artikel mit dem Herz merken. Die Liste liegt nur im eigenen Browser, sie wird nicht an den Shop gesendet. Das Symbol im Header erscheint erst, wenn mindestens ein Favorit gespeichert ist.',
+            'default' => true,
+            'attr' => 'data-mt-favorites',
         ],
         'footer_layout' => [
             'key' => 'mt-footer-layout',

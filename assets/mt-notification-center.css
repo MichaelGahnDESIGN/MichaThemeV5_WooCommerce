@@ -1,2 +1,12 @@
-/* Der Plugin-Dialog bleibt funktional; diese Regeln passen ihn lediglich an die Theme-Werkzeugleiste an. */
-.site-header__tools .mgd-notification-center{margin-inline:.35rem}.site-footer .mgd-notification-center{margin-top:1rem}
+/* Glocke aus MGD Notification Center > Theme-Optik, nur --mt-* Tokens. Plugin-Dialog bleibt funktional */
+.site-header__tools .mgd-notification-center{margin-inline:0}.site-footer .mgd-notification-center{margin-top:1rem}
+.mt-notify-wrap[hidden]{display:none}
+/* Button wie die anderen Icons in der Leiste: 44x44, ohne Rahmen (Linien-Glocke kommt aus inc/notification-center.php) */
+.site-header__tools .mgd-notification-center__button{display:inline-flex;align-items:center;justify-content:center;inline-size:44px;block-size:44px;min-inline-size:44px;border:0;border-radius:var(--mt-r);background:transparent;color:var(--mt-text);transition:background-color .15s ease-out}
+.site-header__tools .mgd-notification-center__button:hover{background:var(--mt-surface-2)}
+/* Zähler neutral wie .mt-list-count (Plugin hat Rot fest drin) */
+.mgd-notification-center__count{background:var(--mt-surface-2);color:var(--mt-text);border:1px solid var(--mt-border-strong);font-weight:700;top:3px;right:1px;min-inline-size:1.25rem;block-size:1.25rem;box-sizing:border-box;padding:0 .3rem;line-height:1.05rem;text-align:center}
+.mgd-notification-center__panel{background:var(--mt-surface);color:var(--mt-text);border-color:var(--mt-border);border-radius:var(--mt-r-lg);box-shadow:var(--mt-shadow-md)}
+.mgd-notification-center__list li{border-top-color:var(--mt-border)}
+.mgd-notification-center__button:focus-visible{outline:var(--mt-focus-width,3px) solid var(--mt-focus);outline-offset:2px}
+@media (max-width:47.99rem){.site-header__tools .mgd-notification-center__panel{right:0;left:auto;top:calc(100% + .35rem)}}

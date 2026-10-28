@@ -30,6 +30,7 @@ if (mt_opt('footer_trust') && $trust) : ?>
             <?php endif; ?>
         </nav>
         <p class="site-footer__copy">&copy; <?php echo esc_html(gmdate('Y')); ?> <?php bloginfo('name'); ?></p>
+        <?php mt_mode_toggle_row('footer'); ?>
         <?php mt_notification_center_render('footer'); ?>
     </div>
 </footer>
