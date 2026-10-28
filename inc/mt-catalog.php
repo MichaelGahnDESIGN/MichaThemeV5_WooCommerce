@@ -2,7 +2,7 @@
 /** AUTOMATISCH ERZEUGT aus themes/core/options.json (php bin/build-themes.php). Nicht von Hand ändern. */
 
 return [
-    'version' => '0.2.1',
+    'version' => '0.3.0',
     'groups' => [
         'colors' => [
             'label' => 'Farben',
@@ -80,9 +80,10 @@ return [
             'mode' => 'simple',
             'label' => 'Akzentfarbe',
             'help' => 'Farbe für Buttons, Links und Hervorhebungen. Alle Varianten sind für Hell und Dunkel auf Kontrast geprüft.',
-            'default' => 'indigo',
+            'default' => 'red',
             'attr' => 'data-accent',
             'choices' => [
+                'red' => 'Rot',
                 'teal' => 'Petrol',
                 'indigo' => 'Indigo',
                 'amber' => 'Bernstein',
@@ -682,8 +683,8 @@ return [
             'type' => 'text',
             'mode' => 'simple',
             'label' => 'Lieferzeit',
-            'help' => 'Standard für alle Artikel, je Artikel überschreibbar mit dem Custom Field _mt_delivery_time (Text). Leer = keine Angabe. Ist Germanized oder German Market aktiv, zeigt das Theme nichts, damit die Lieferzeit nicht doppelt erscheint.',
-            'default' => 'Lieferzeit: 2–4 Werktage',
+            'help' => 'Beispiel: Lieferzeit: 2–4 Werktage (nur eintragen, wenn es stimmt). Gilt für alle Artikel, je Artikel überschreibbar mit dem Custom Field _mt_delivery_time (Text). Leer = keine Angabe. Ist Germanized oder German Market aktiv, zeigt das Theme nichts, damit die Lieferzeit nicht doppelt erscheint.',
+            'default' => '',
         ],
         'legal_lowest_price' => [
             'key' => 'mt-legal-lowest-price',
