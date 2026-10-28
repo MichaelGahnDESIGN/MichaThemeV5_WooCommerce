@@ -89,9 +89,10 @@
             "type": "select",
             "mode": "simple",
             "label": "Akzentfarbe",
-            "default": "indigo",
+            "default": "red",
             "help": "Farbe für Buttons, Links und Hervorhebungen. Alle Varianten sind für Hell und Dunkel auf Kontrast geprüft.",
             "choices": {
+                "red": "Rot",
                 "teal": "Petrol",
                 "indigo": "Indigo",
                 "amber": "Bernstein",
@@ -670,8 +671,8 @@
             "type": "text",
             "mode": "simple",
             "label": "Lieferzeit",
-            "default": "Lieferzeit: 2–4 Werktage",
-            "help": "Standard für alle Artikel, je Artikel überschreibbar mit dem Custom Field _mt_delivery_time (Text). Leer = keine Angabe. Ist Germanized oder German Market aktiv, zeigt das Theme nichts, damit die Lieferzeit nicht doppelt erscheint."
+            "default": "",
+            "help": "Beispiel: Lieferzeit: 2–4 Werktage (nur eintragen, wenn es stimmt). Gilt für alle Artikel, je Artikel überschreibbar mit dem Custom Field _mt_delivery_time (Text). Leer = keine Angabe. Ist Germanized oder German Market aktiv, zeigt das Theme nichts, damit die Lieferzeit nicht doppelt erscheint."
         },
         {
             "id": "legal_lowest_price",

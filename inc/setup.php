@@ -63,3 +63,19 @@ function mt_logo(): void
     }
     echo '</a>';
 }
+
+/** Kleine Strich-Icons (24 px, currentColor) für Kopfbereich und Suche; rein dekorativ, Beschriftung steckt im Button/Link. */
+function mt_icon(string $name): string
+{
+    $paths = [
+        'search' => '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
+        'user' => '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
+        'bag' => '<path d="M6 7h12l1 13H5L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0"/>',
+        'contrast' => '<circle cx="12" cy="12" r="9"/><path d="M12 3v18a9 9 0 0 0 0-18Z" fill="currentColor"/>',
+    ];
+    if (!isset($paths[$name])) {
+        return '';
+    }
+
+    return '<svg class="mt-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' . $paths[$name] . '</svg>';
+}

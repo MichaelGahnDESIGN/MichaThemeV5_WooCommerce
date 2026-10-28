@@ -7,7 +7,7 @@
 
 defined('ABSPATH') || exit;
 
-define('MT_VERSION', '0.2.1');
+define('MT_VERSION', '0.3.0');
 
 require_once __DIR__ . '/inc/options.php';
 require_once __DIR__ . '/inc/license.php';
