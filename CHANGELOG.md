@@ -2,6 +2,15 @@
 
 Hier steht, was sich von Version zu Version geändert hat. Das Theme ist noch in einer frühen Phase (Pre-Alpha). Bitte nicht in einem echten Shop einsetzen, ohne es vorher selbst zu testen.
 
+## 0.5.1 (28.10.2026, Pre-Alpha)
+
+Wichtige Korrektur zu 0.5.0. Bitte 0.5.1 statt 0.5.0 nehmen.
+
+**Korrigiert**
+
+- Das Plugin stürzte ab (weißer Bildschirm), wenn es aktiviert wurde, solange noch ein Theme vor Version 0.5.0 aktiv war. Das war genau der Weg beim Umstieg: erst Plugin installieren, dann Theme aktualisieren. Ursache: Plugin und altes Theme haben denselben Lizenz-Baustein mitgebracht. Jetzt hat das Plugin seinen eigenen, die beiden stören sich nicht mehr. Ein Test sichert das ab.
+- Gefunden beim Einspielen auf dem Demo-Shop. Der Shop war nur kurz betroffen (Wartungsmodus lief) und ist wiederhergestellt.
+
 ## 0.5.0 (28.10.2026, Pre-Alpha)
 
 Neu: Plugin MichaThemeV5 mit Einstellungsseite, und viel mehr Farben und Stile im Theme.
