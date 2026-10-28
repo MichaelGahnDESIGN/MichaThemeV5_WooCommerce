@@ -109,13 +109,23 @@ input[type="checkbox"], input[type="radio"] { accent-color: var(--mt-accent); wi
 .mt-icon { display: block; flex: none; }
 /* Warenkorb Zähler - rote Pille */
 .mt-cart-count { position: absolute; top: 3px; right: 1px; min-width: 1.25rem; height: 1.25rem; box-sizing: border-box; padding: 0 .3rem; border-radius: 999px; background: var(--mt-accent); color: var(--mt-on-accent); font-size: var(--mt-text-xs); font-weight: 700; line-height: 1.25rem; text-align: center; font-variant-numeric: tabular-nums; }
-.site-header .mt-mode-toggle { display: inline-flex; align-items: center; gap: .4rem; border-color: transparent; background: transparent; font: inherit; font-size: var(--mt-text-sm); transition: background-color .15s ease-out; }
-.site-header .mt-mode-toggle:hover { background: var(--mt-surface-2); }
-/* Handy: nur Symbol, Beschriftung bleibt im Button für Screenreader */
+/* Icon-Leiste: Reihenfolge Schalter, Glocke, Merkliste, Favoriten, Konto, Warenkorb (Markup in header.php) */
+.site-header__inner { position: relative; }
+.site-header__tools { flex-wrap: nowrap; }
+.site-header__brand { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mt-hdr-item > .mt-icon-link { cursor: pointer; border: 0; background: transparent; padding: 0; font: inherit; }
+.mt-hdr-item > .mt-icon-link:hover { background: var(--mt-surface-2); }
+.site-header .mt-mode-toggle--icon:hover { background: var(--mt-surface-2); }
+/* Handy 390: Icons enger, Touch bleibt 44px; Panels hängen am Header statt am Icon */
 @media (max-width: 47.99rem) {
-  .mt-mode-toggle__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-  .site-header .mt-mode-toggle { padding: 0; justify-content: center; }
+  .site-header__tools { gap: 0; }
+  .site-header .mt-hdr-item, .site-header .mgd-notification-center { position: static; }
 }
+/* Herz Artikelseite + Footer/Konto-Zeile Farbmodus */
+.mt-fav-single { margin: 0 0 var(--mt-gap); }
+.mt-mode-row { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; margin: var(--mt-gap) 0 0; }
+.mt-mode-row__label { font-weight: 700; }
+.mt-mode-row--account { margin-top: calc(var(--mt-gap) * 1.5); }
 
 /* Buttons - Standard ist sekundär (neutral umrandet), Primär nur für die Hauptaktion */
 .woocommerce a.button, .woocommerce button.button, .woocommerce input.button, .woocommerce #respond input#submit {
