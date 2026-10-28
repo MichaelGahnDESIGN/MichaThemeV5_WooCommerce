@@ -2,6 +2,16 @@
 
 Hier steht, was sich von Version zu Version geändert hat. Das Theme ist noch in einer frühen Phase (Pre-Alpha). Bitte nicht in einem echten Shop einsetzen, ohne es vorher selbst zu testen.
 
+## 0.3.1 (28.10.2026, Pre-Alpha)
+
+Kleine Korrektur zu 0.3.0.
+
+**Geändert**
+
+- Die Ankündigungsleiste hat keinen vorausgefüllten Text mehr. Wer sie einschaltet, schreibt den Text selbst.
+- Prozent-Siegel und Countdown sind im Standard aus.
+- Textlinks ändern beim Darüberfahren ihre Farbe auf die Link-Farbe der Akzentfarbe (gut lesbar im Hell- und Dunkelmodus).
+
 ## 0.3.0 (28.10.2026, Pre-Alpha)
 
 Das Theme hat ein neues, einheitliches Aussehen. Es passt jetzt zu den Themes für Shopware, JTL und Shopify.
