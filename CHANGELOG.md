@@ -2,6 +2,32 @@
 
 Hier steht, was sich von Version zu Version geändert hat. Das Theme ist noch in einer frühen Phase (Pre-Alpha). Bitte nicht in einem echten Shop einsetzen, ohne es vorher selbst zu testen.
 
+## 0.5.0 (28.10.2026, Pre-Alpha)
+
+Neu: Plugin MichaThemeV5 mit Einstellungsseite, und viel mehr Farben und Stile im Theme.
+
+**Neu im Plugin** (eigenes ZIP: `michatheme-v5-plugin-0.5.0.zip`, Menü „MichaThemeV5“)
+
+- Einstellungen: alle Optionen übersichtlich in Gruppen, mit Suche, Ansicht „Einfach“ oder „Experte“, Filter („Nur geänderte“, „Nur Pflichtangaben“), Live-Hinweisen und Zurücksetzen je Feld und Gruppe. Gespeichert wird in dieselben Einstellungen wie im Customizer, es geht nichts verloren. Vor jedem Speichern legt das Plugin eine Sicherung an.
+- Design-Presets: Standard, Glas, Kompakt per Klick.
+- Lizenzen: Lizenzcode einfügen, Status sehen, Link zum Kauf. Ohne Code läuft alles in der Free-Version.
+- Plugin-Empfehlungen: weitere Plugins aus dem Katalog (nur im Admin, Fehler bleiben leise).
+- Info: Versionen, Systeminfo, Changelog, „Theme einrichten“ (nur per Knopf mit Rückfrage, Backup und Prüfsumme) und „Einstellungen wiederherstellen“.
+- Der Hinweis auf das Plugin im Theme erscheint nur im Admin (Dashboard und Themes), ist 30 Tage ausblendbar und stört den Shop nicht.
+
+**Neu im Theme**
+
+- Eigene Farben: 16 Farben, je Hell und Dunkel (Seitenhintergrund, Flächen, Text, Rahmen, Link, Button-Text, Header, Footer, Ankündigung, Sale/Fehler, Erfolg, Warnung, Info, Fokus). Leer heißt Standard. Mit Colorpicker und Palette (12 Farben), Vorschau und Kontrast-Warnung. Gespeichert wird auch bei Warnung.
+- Neue Optionen: Kartenstil (flach, Rahmen, Schatten), Flächenstil (einfarbig oder Glas) und Inhaltsbreite (schmal, normal, breit).
+- Farbwerte dürfen `#rgb`, `#rrggbb` oder `#rrggbbaa` sein.
+
+**Ehrlich**
+
+- Getestet in WordPress 7.1 mit WooCommerce 11.2 (Docker): Einstellungen, Presets, Lizenz (ungültig, entfernt), Empfehlungen, Theme kopieren und aktivieren, Rechte und Nonces, Plugin aus und an. Barrierefreiheit mit axe-core (Hell und Dunkel) ohne Verstöße, 390 px ohne Querscrollen, Fokusrahmen sichtbar. Noch nicht getestet: VoiceOver von Hand, Divi und Elementor, Multisite, echter Lizenzcode mit gültiger Lizenz.
+- Die Oberfläche ist nur auf Deutsch.
+- Bilder aus dem Katalog zeigt das Plugin noch nicht an (der Feed liefert aktuell keine).
+- Das Plugin ist unter GPL-2.0-oder-später, das Theme steht weiter als „Proprietary“. Die Lizenzfrage wird noch rechtlich geprüft.
+
 ## 0.4.1 (28.10.2026, Pre-Alpha)
 
 Kleine Korrektur zu 0.4.0 und bessere Anleitung.

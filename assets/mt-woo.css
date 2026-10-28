@@ -26,7 +26,7 @@
   :root:not([data-theme="light"]) { --mt-woo-hover-bg: var(--mt-surface-2); --mt-woo-hover-shadow: var(--mt-shadow); --mt-photo-edge: rgba(255, 255, 255, .08); }
 }
 
-.mt-container { width: min(100% - 2rem, 80rem); margin-inline: auto; padding-block: calc(var(--mt-gap) * 1.5); }
+.mt-container { width: min(100% - 2rem, var(--mt-container, 80rem)); margin-inline: auto; padding-block: calc(var(--mt-gap) * 1.5); }
 .mt-entry { margin-block: var(--mt-gap); }
 .mt-section { margin-block: calc(var(--mt-gap) * 2); width: min(100% - 2rem, 80rem); margin-inline: auto; }
 
@@ -43,7 +43,7 @@
 .mt-menu .sub-menu a:hover { background: var(--mt-surface-2); }
 
 /* Header: Logo links, Suche mittig, Werkzeuge rechts, Menü in Zeile 2 */
-.site-header { background: var(--mt-surface); border-bottom: 1px solid var(--mt-border); }
+.site-header { background: var(--mt-header-bg, var(--mt-surface)); border-bottom: 1px solid var(--mt-border); }
 .site-header__inner {
   display: grid; align-items: center; column-gap: var(--mt-gap); row-gap: .5rem; width: min(100% - 2rem, 80rem); margin-inline: auto; padding-block: .75rem .5rem;
   grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "brand tools" "search search" "nav nav";
@@ -327,8 +327,8 @@ input[type="checkbox"], input[type="radio"] { accent-color: var(--mt-accent); wi
 .woocommerce nav.woocommerce-pagination ul li span.current, .navigation.pagination .page-numbers.current { background: var(--mt-accent); color: var(--mt-on-accent); border-color: var(--mt-accent); font-weight: 700; }
 
 /* Footer */
-.site-footer { background: var(--mt-surface-2); color: var(--mt-text); border-top: 1px solid var(--mt-border); margin-top: calc(var(--mt-gap) * 3); }
-.site-footer__inner { width: min(100% - 2rem, 80rem); margin-inline: auto; padding-block: calc(var(--mt-gap) * 2); }
+.site-footer { background: var(--mt-footer-bg, var(--mt-surface-2)); color: var(--mt-text); border-top: 1px solid var(--mt-border); margin-top: calc(var(--mt-gap) * 3); }
+.site-footer__inner { width: min(100% - 2rem, var(--mt-container, 80rem)); margin-inline: auto; padding-block: calc(var(--mt-gap) * 2); }
 .site-footer a { color: var(--mt-text); }
 .site-footer a:hover { color: var(--mt-accent-text); }
 .site-footer .mt-menu a { font-weight: 400; text-decoration: underline; text-underline-offset: 3px; border-bottom: 0; }
@@ -358,3 +358,18 @@ input[type="checkbox"], input[type="radio"] { accent-color: var(--mt-accent); wi
 .wc-block-components-notice-banner.is-warning { background: var(--mt-warning-bg); border-color: var(--mt-warning-border); }
 .wc-block-components-notice-banner.is-warning > svg { background-color: var(--mt-warning); }
 .wc-block-components-product-sale-badge, .wc-block-grid__product-onsale { background: var(--mt-danger-bg); color: var(--mt-danger); border: 1px solid var(--mt-danger-border); border-radius: 999px; font-weight: 700; }
+
+/* Kartenstil (Option cards_style): flach, mit Rahmen (Standard) oder mit Schatten */
+:root[data-mt-cards="flat"] .woocommerce ul.products li.product, :root[data-mt-cards="flat"] .woocommerce .cart-collaterals .cart_totals { border-color: transparent; box-shadow: none; }
+:root[data-mt-cards="elevated"] .woocommerce ul.products li.product, :root[data-mt-cards="elevated"] .woocommerce .cart-collaterals .cart_totals { box-shadow: var(--mt-shadow-md); }
+
+/* Glas (Option surface_style): halbtransparente Flächen, nur mit backdrop-filter, sonst bleibt es einfarbig */
+@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  @media (prefers-reduced-transparency: no-preference) {
+    :root[data-mt-surface="glass"] .site-header, :root[data-mt-surface="glass"] .woocommerce ul.products li.product, :root[data-mt-surface="glass"] .woocommerce .cart-collaterals .cart_totals,
+    :root[data-mt-surface="glass"] .woocommerce table.shop_table, :root[data-mt-surface="glass"] .mt-announcement {
+      background: var(--mt-glass-bg); border-color: var(--mt-glass-border); -webkit-backdrop-filter: blur(var(--mt-glass-blur)) saturate(140%); backdrop-filter: blur(var(--mt-glass-blur)) saturate(140%);
+    }
+    :root[data-mt-surface="glass"][data-mt-sticky="1"] .site-header { box-shadow: var(--mt-shadow-sm); }
+  }
+}

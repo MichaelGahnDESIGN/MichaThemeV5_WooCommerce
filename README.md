@@ -6,7 +6,7 @@ Theme von Michael Gahn DESIGN mit Hell-/Dunkelmodus, vielen Optionen und rechtss
 
 ## Funktionen
 
-30 Free-Funktionen sind aufgeführt (fertig oder noch in Arbeit, den Stand zeigt die Liste). Dieses Repo enthält ausschließlich die kostenlosen Funktionen.
+35 Free-Funktionen sind aufgeführt (fertig oder noch in Arbeit, den Stand zeigt die Liste). Dieses Repo enthält ausschließlich die kostenlosen Funktionen.
 Die vollständige Liste mit Status steht in [`docs/FEATURES.md`](docs/FEATURES.md), offene Punkte in [`TODO.md`](TODO.md).
 
 ## Aussehen (ab Version 0.3.0)
@@ -15,9 +15,9 @@ Hell: Weiß und Hellgrau. Dunkel: Anthrazit. Der Standard-Akzent ist Rot und lä
 
 ## Farben und Colorpicker
 
-Der Colorpicker ist ein Farbwähler. Er hat eine Farbfläche, einen Farbton-Regler und ein Feld für den HEX-Wert (zum Beispiel `#c8161a`) mit Kopieren-Knopf. Dazu kommt eine Palette für bis zu 12 gespeicherte Farben und eine Warnung, wenn Text auf deiner Akzentfarbe schlecht lesbar wäre.
+Der Colorpicker ist ein Farbwähler. Er hat eine Farbfläche, einen Farbton-Regler und ein Feld für den HEX-Wert (zum Beispiel `#c8161a`) mit Kopieren-Knopf. Dazu kommt eine Palette für bis zu 12 gespeicherte Farben und eine Warnung, wenn Text auf deinen Farben schlecht lesbar wäre.
 
-Ehrlich gesagt: Der Colorpicker ist fertig und getestet, aber in diesem Theme noch nicht zu sehen. Er wird mit den Einstellungsseiten der Plugins in Version 0.5.0 eingebunden. Bis dahin wählst du die Akzentfarbe wie bisher: aus der Liste oder als eigene Farbe (HEX-Wert) in den Theme-Einstellungen.
+Ehrlich gesagt: Eingebunden ist er bisher nur in der WooCommerce-Version, in der Einstellungsseite des Plugins MichaThemeV5 (Version 0.5.0). Auf den anderen Plattformen wählst du die Akzentfarbe wie bisher aus der Liste oder als eigene Farbe (HEX-Wert) in den Theme-Einstellungen. Die Einbindung folgt später.
 
 ## Icon-Leiste in der Kopfzeile (ab Version 0.4.0)
 
@@ -29,6 +29,21 @@ Von links nach rechts: Hell/Dunkel-Schalter, Glocke, Merkliste, Favoriten, Konto
 - **Favoriten:** Eine eigene Herz-Liste des Themes. Das Herz sitzt auf den Produktkarten und auf der Artikelseite. Die Liste steht nur im Browser des Besuchers. Abschaltbar im Customizer („Favoriten (Herz-Liste) anzeigen“).
 
 Mehr dazu: [`docs/ICON-LEISTE.md`](docs/ICON-LEISTE.md).
+
+## Plugin MichaThemeV5 (ab Version 0.5.0)
+
+Das Plugin ist die bequeme Einstellungsseite für das Theme. Das Theme läuft auch ohne Plugin, dann stellst du alles wie bisher im Customizer ein.
+
+Das Plugin bringt vier Seiten mit (WordPress-Menü „MichaThemeV5“):
+
+1. **Einstellungen**: alle Optionen, gruppiert, mit Suche, Ansicht „Einfach“ oder „Experte“, Filter und Live-Hinweisen. Oben stehen die **Design-Presets** (Standard, Glas, Kompakt): ein Klick setzt mehrere Einstellungen. Vorher wird automatisch gesichert.
+2. **Eigene Farben** (Gruppe in den Einstellungen): 16 Farben, je für Hell und Dunkel einzeln. Leer heißt: Standard des Themes. Mit Colorpicker, einer Palette für 12 Farben (gilt für den ganzen Shop) und einer Vorschau. Die Warnung zeigt dir, wenn Text zu schwach zu lesen wäre (Text mindestens 4,5 zu 1, Rahmen und Fokus mindestens 3 zu 1). Gespeichert wird trotzdem.
+3. **Lizenzen**: Lizenzcode einfügen, Status sehen, Link zum Kauf. Ohne Code läuft alles in der Free-Version.
+4. **Plugin-Empfehlungen** und **Info** (Versionen, Theme einrichten, Einstellungen wiederherstellen).
+
+Datenschutz: Für die Lizenzprüfung gehen nur Lizenzcode und Domain an https://theme.michael-gahn.de. Die Empfehlungen werden nur im Admin geladen. Besucher deines Shops sind nicht betroffen.
+
+Verträglichkeit: Das Plugin lädt Skripte und Stile nur auf seinen eigenen Admin-Seiten. Im Shop und in Seitenbaukästen wie Divi oder Elementor tut es nichts.
 
 ## Weitere Funktionen (Pro)
 
