@@ -2,6 +2,19 @@
 
 Hier steht, was sich von Version zu Version geändert hat. Das Theme ist noch in einer frühen Phase (Pre-Alpha). Bitte nicht in einem echten Shop einsetzen, ohne es vorher selbst zu testen.
 
+## 0.4.1 (28.10.2026, Pre-Alpha)
+
+Kleine Korrektur zu 0.4.0 und bessere Anleitung.
+
+**Korrigiert**
+
+- Korrigiert: Zähl-Texte für Screenreader stimmen jetzt in der Einzahl. Bei genau einem Favoriten heißt es „Favoriten, 1 Eintrag“, bei mehreren „Favoriten, 2 Einträge“ (vorher stand bei einem Favoriten „1 Einträge“).
+
+**Doku**
+
+- Anleitung für die Symbol-Leiste jetzt auch in `docs/INSTALL.md` und in der `README.md`.
+- Neuer Abschnitt „Farben und Colorpicker“. Ehrlich: Der Colorpicker ist fertig, aber noch nicht im Theme sichtbar. Er kommt mit den Plugin-Einstellungsseiten in Version 0.5.0.
+
 ## 0.4.0 (28.10.2026, Pre-Alpha)
 
 Neue Symbol-Leiste im Kopfbereich.

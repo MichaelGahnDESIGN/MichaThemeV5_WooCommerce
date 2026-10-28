@@ -34,4 +34,9 @@
 - [ ] **Ausverkauft-Konfiguration** [Free] – in Arbeit
 - [ ] **EU- und DE-konforme Statistik (Datenschutz)** [Free] – geplant
 - [ ] **Rechtstext-Platzhalter und Hinweise** [Free] – geplant
+- [ ] **Colorpicker (Farbwähler)** [Free] – in Arbeit
+
+## Priorität 3
+
+- [ ] **Gespeicherte Farbpalette** [Free] – in Arbeit
 
