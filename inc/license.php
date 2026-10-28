@@ -1,7 +1,10 @@
 <?php
 defined('ABSPATH') || exit;
 
-require_once __DIR__ . '/license-client.php';
+// Das Plugin MichaThemeV5 bringt denselben Lizenzclient mit; wer zuerst da ist, gewinnt (sonst doppelte Klasse)
+if (!class_exists('MichaThemeV5\\Client\\LicenseClient', false)) {
+    require_once __DIR__ . '/license-client.php';
+}
 
 use MichaThemeV5\Client\LicenseClient;
 
@@ -38,16 +41,29 @@ function mt_license(): LicenseClient
     return $client;
 }
 
+/** Lizenzcode: zuerst vom Plugin (eigene Seite "Lizenzen"), sonst wie bisher aus der Theme-Einstellung. */
+function mt_license_token(): string
+{
+    if (class_exists('MT_Bridge', false)) {
+        $t = get_option('michatheme_v5_license', '');
+        if (is_string($t) && $t !== '') {
+            return $t;
+        }
+    }
+
+    return (string) get_theme_mod('mt-license-token', '');
+}
+
 function mt_license_state(): array
 {
-    return mt_license()->state((string) get_theme_mod('mt-license-token', ''));
+    return mt_license()->state(mt_license_token());
 }
 
 /** Ist das Modul (z. B. eines separat ausgelieferten Add-ons) per Lizenz freigeschaltet? Im Theme selbst nutzt keine Funktion diese Prüfung. */
 function mt_license_allows(string $module): bool
 {
     try {
-        return mt_license()->allows((string) get_theme_mod('mt-license-token', ''), $module);
+        return mt_license()->allows(mt_license_token(), $module);
     } catch (\Throwable $e) {
         return false; // Der Shop bricht nie: bei jedem Fehler gilt Free.
     }
