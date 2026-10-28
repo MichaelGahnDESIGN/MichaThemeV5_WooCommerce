@@ -2,7 +2,7 @@
 /** AUTOMATISCH ERZEUGT aus themes/core/options.json (php bin/build-themes.php). Nicht von Hand ändern. */
 
 return [
-    'version' => '0.3.0',
+    'version' => '0.3.1',
     'groups' => [
         'colors' => [
             'label' => 'Farben',
@@ -335,8 +335,8 @@ return [
             'type' => 'text',
             'mode' => 'simple',
             'label' => 'Text der Ankündigungsleiste',
-            'help' => 'Bitte nur belegbare Aussagen verwenden (UWG).',
-            'default' => 'Kostenloser Versand ab 50 €',
+            'help' => 'Leer = keine Meldung. Bitte nur belegbare Aussagen verwenden (UWG), zum Beispiel eine Versandgrenze nur, wenn sie im Shop wirklich gilt.',
+            'default' => '',
         ],
         'footer_layout' => [
             'key' => 'mt-footer-layout',
