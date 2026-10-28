@@ -3,7 +3,7 @@
  * Plugin Name: MichaThemeV5
  * Plugin URI: https://theme.michael-gahn.de
  * Description: Übersichtliche Einstellungsseite, Lizenzverwaltung und Plugin-Empfehlungen für das Theme MichaThemeV5. Das Theme funktioniert auch ohne dieses Plugin.
- * Version: 0.5.0
+ * Version: 0.5.1
  * Requires at least: 6.4
  * Requires PHP: 8.1
  * Author: Michael Gahn DESIGN
@@ -15,9 +15,9 @@
 
 defined('ABSPATH') || exit;
 
-define('MT_PLUGIN_VERSION', '0.5.0');
+define('MT_PLUGIN_VERSION', '0.5.1');
 // Theme-Version, die im Plugin-ZIP mitgeliefert wird, und die kleinste Version, mit der das Plugin zusammenarbeitet
-define('MT_PLUGIN_THEME_BUNDLED', '0.5.0');
+define('MT_PLUGIN_THEME_BUNDLED', '0.5.1');
 define('MT_PLUGIN_THEME_MIN', '0.5.0');
 define('MT_PLUGIN_FILE', __FILE__);
 define('MT_PLUGIN_DIR', plugin_dir_path(__FILE__));
@@ -33,7 +33,8 @@ foreach (['BridgeInterface', 'Sanitizer', 'FeedNormalizer', 'CatalogFeed', 'Lice
         require_once MT_PLUGIN_DIR . 'includes/generated/' . $mt_core . '.php';
     }
 }
-if (!class_exists('MichaThemeV5\\Client\\LicenseClient', false)) {
+// Eigener Namespace (Plugin), damit ein älteres Theme mit eigenem Lizenzclient nicht kollidiert
+if (!class_exists('MichaThemeV5\\Plugin\\LicenseClient', false)) {
     require_once MT_PLUGIN_DIR . 'includes/generated/LicenseClient.php';
 }
 require_once MT_PLUGIN_DIR . 'includes/class-mt-store.php';

@@ -1,8 +1,7 @@
 <?php
 defined('ABSPATH') || exit;
 
-use MichaThemeV5\Client\LicenseClient;
-use MichaThemeV5\Plugin\{LicenseTexts, Sanitizer};
+use MichaThemeV5\Plugin\{LicenseClient, LicenseTexts, Sanitizer};
 
 /** Lizenzcode und Status. Der Code steht nur in der Option michatheme_v5_license (nicht automatisch geladen), nie in Logs oder im Frontend. */
 final class MT_License

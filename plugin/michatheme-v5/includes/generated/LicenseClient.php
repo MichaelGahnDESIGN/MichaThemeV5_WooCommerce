@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MichaThemeV5\Client;
+namespace MichaThemeV5\Plugin;
 
 defined('ABSPATH') || exit;
 
