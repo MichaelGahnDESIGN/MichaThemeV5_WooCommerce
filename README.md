@@ -17,7 +17,9 @@ Hell: Weiß und Hellgrau. Dunkel: Anthrazit. Der Standard-Akzent ist Rot und lä
 
 Der Colorpicker ist ein Farbwähler. Er hat eine Farbfläche, einen Farbton-Regler und ein Feld für den HEX-Wert (zum Beispiel `#c8161a`) mit Kopieren-Knopf. Dazu kommt eine Palette für bis zu 12 gespeicherte Farben und eine Warnung, wenn Text auf deinen Farben schlecht lesbar wäre.
 
-Ehrlich gesagt: Eingebunden ist er bisher nur in der WooCommerce-Version, in der Einstellungsseite des Plugins MichaThemeV5 (Version 0.5.0). Auf den anderen Plattformen wählst du die Akzentfarbe wie bisher aus der Liste oder als eigene Farbe (HEX-Wert) in den Theme-Einstellungen. Die Einbindung folgt später.
+Eingebunden ist er in der Einstellungsseite des Plugins MichaThemeV5: bei WooCommerce ab Plugin 0.5.0, bei JTL-Shop 5 ab Plugin 0.5.1 und bei Shopware 6 im Admin-Modul ab 0.5.1. Dort gibt es 16 Farbfelder je Hell und Dunkel. Ohne Plugin wählst du die Akzentfarbe wie bisher aus der Liste oder als eigene Farbe (HEX-Wert) in den Theme-Einstellungen. Bei Shopify gibt es den Colorpicker nicht: Der Theme-Editor hat einen eigenen Farbwähler, und gespeicherte Paletten sind dort nicht möglich.
+
+Ehrlich gesagt: Die Plugins sind Pre-Alpha und bisher nur in Test- und Demo-Umgebungen geprüft.
 
 ## Icon-Leiste in der Kopfzeile (ab Version 0.4.0)
 
@@ -36,7 +38,7 @@ Das Plugin ist die bequeme Einstellungsseite für das Theme. Das Theme läuft au
 
 Das Plugin bringt vier Seiten mit (WordPress-Menü „MichaThemeV5“):
 
-1. **Einstellungen**: alle Optionen, gruppiert, mit Suche, Ansicht „Einfach“ oder „Experte“, Filter und Live-Hinweisen. Oben stehen die **Design-Presets** (Standard, Glas, Kompakt): ein Klick setzt mehrere Einstellungen. Vorher wird automatisch gesichert.
+1. **Einstellungen**: alle Optionen, gruppiert, mit Suche, Ansicht „Einfach“ oder „Experte“, Filter und Live-Hinweisen. Oben stehen die **Design-Presets** (Standard, Glas, Kompakt): ein Klick setzt mehrere Einstellungen. Vorher wird automatisch gesichert. Dazu kommen drei Layout-Einstellungen: **Kartenstil** (flach, mit Rahmen, mit Schatten), **Flächenstil** (einfarbig oder Glas) und **Inhaltsbreite** (schmal, normal, breit).
 2. **Eigene Farben** (Gruppe in den Einstellungen): 16 Farben, je für Hell und Dunkel einzeln. Leer heißt: Standard des Themes. Mit Colorpicker, einer Palette für 12 Farben (gilt für den ganzen Shop) und einer Vorschau. Die Warnung zeigt dir, wenn Text zu schwach zu lesen wäre (Text mindestens 4,5 zu 1, Rahmen und Fokus mindestens 3 zu 1). Gespeichert wird trotzdem.
 3. **Lizenzen**: Lizenzcode einfügen, Status sehen, Link zum Kauf. Ohne Code läuft alles in der Free-Version.
 4. **Plugin-Empfehlungen** und **Info** (Versionen, Theme einrichten, Einstellungen wiederherstellen).
