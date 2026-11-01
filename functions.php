@@ -19,3 +19,4 @@ require_once __DIR__ . '/inc/notification-center.php';
 require_once __DIR__ . '/inc/icon-bar.php';
 require_once __DIR__ . '/inc/color-overrides.php';
 require_once __DIR__ . '/inc/plugin-notice.php';
+require_once __DIR__ . '/inc/demo-import.php';
