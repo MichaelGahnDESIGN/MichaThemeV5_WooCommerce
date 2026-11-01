@@ -3,7 +3,7 @@
  * Plugin Name: MichaThemeV5
  * Plugin URI: https://theme.michael-gahn.de
  * Description: Übersichtliche Einstellungsseite, Lizenzverwaltung und Plugin-Empfehlungen für das Theme MichaThemeV5. Das Theme funktioniert auch ohne dieses Plugin.
- * Version: 0.5.1
+ * Version: 0.6.0
  * Requires at least: 6.4
  * Requires PHP: 8.1
  * Author: Michael Gahn DESIGN
@@ -15,9 +15,9 @@
 
 defined('ABSPATH') || exit;
 
-define('MT_PLUGIN_VERSION', '0.5.1');
+define('MT_PLUGIN_VERSION', '0.6.0');
 // Theme-Version, die im Plugin-ZIP mitgeliefert wird, und die kleinste Version, mit der das Plugin zusammenarbeitet
-define('MT_PLUGIN_THEME_BUNDLED', '0.5.1');
+define('MT_PLUGIN_THEME_BUNDLED', '0.6.0');
 define('MT_PLUGIN_THEME_MIN', '0.5.0');
 define('MT_PLUGIN_FILE', __FILE__);
 define('MT_PLUGIN_DIR', plugin_dir_path(__FILE__));
