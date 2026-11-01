@@ -2,6 +2,21 @@
 
 Hier steht, was sich von Version zu Version geändert hat. Das Theme ist noch in einer frühen Phase (Pre-Alpha). Bitte nicht in einem echten Shop einsetzen, ohne es vorher selbst zu testen.
 
+## 0.6.0 (01.11.2026, Pre-Alpha)
+
+Neu: Demo-Artikel importieren und entfernen.
+
+**Neu**
+
+- Demo-Artikel importieren und entfernen: 16 Beispielartikel in 4 Kategorien, je 3 Platzhalterbilder (selbst erzeugt, keine Internetzugriffe), mit Preisen, Streichpreisen, Artikelnummern (SKU) und Bestand. So siehst du das Theme gleich mit Inhalt.
+- Kurzanleitung: WooCommerce muss aktiv sein. In WordPress unter Werkzeuge, Demo-Inhalte, auf „Importieren“ klicken. Zum Aufräumen dort „Entfernen“ wählen und bestätigen. Per WP-CLI geht es auch: `wp michatheme demo import`, `wp michatheme demo status` und `wp michatheme demo remove` (mit `--yes` ohne Rückfrage).
+- Der Import ist wiederholbar und legt nichts doppelt an. Ein Artikel mit gleicher Artikelnummer, der nicht zur Demo gehört, wird übersprungen.
+
+**Wichtig zu wissen**
+
+- Entfernen löscht nur Einträge mit der Demo-Markierung (Artikel, Bilder und Kategorien). Eigene Artikel bleiben unberührt. Eine Demo-Kategorie bleibt stehen, wenn eigene Artikel darin liegen.
+- Bitte zuerst in einem Test-Shop ausprobieren und vorher eine Sicherung machen.
+
 ## 0.5.1 (28.10.2026, Pre-Alpha)
 
 Wichtige Korrektur zu 0.5.0. Bitte 0.5.1 statt 0.5.0 nehmen.

@@ -47,6 +47,16 @@ Datenschutz: Für die Lizenzprüfung gehen nur Lizenzcode und Domain an https://
 
 Verträglichkeit: Das Plugin lädt Skripte und Stile nur auf seinen eigenen Admin-Seiten. Im Shop und in Seitenbaukästen wie Divi oder Elementor tut es nichts.
 
+## Demo-Artikel importieren und entfernen (ab Version 0.6.0)
+
+Mit einem Klick bekommt dein Test-Shop 16 Beispielartikel in 4 Kategorien (je 3 Platzhalterbilder, ohne Internetzugriff). Voraussetzung: WooCommerce ist aktiv.
+
+1. WordPress: Werkzeuge, Demo-Inhalte, „Importieren“. Ein zweiter Import legt nichts doppelt an.
+2. Zum Aufräumen dort „Entfernen“ wählen und bestätigen.
+3. Per WP-CLI: `wp michatheme demo import`, `wp michatheme demo status`, `wp michatheme demo remove` (mit `--yes` ohne Rückfrage).
+
+Entfernen löscht nur markierte Demo-Einträge. Eigene Artikel bleiben. Bitte vorher eine Sicherung machen und zuerst in einem Test-Shop ausprobieren.
+
 ## Weitere Funktionen (Pro)
 
 Dieses Repo enthält nur die kostenlosen Funktionen (Free). Pro-Funktionen und Erweiterungen werden separat und privat ausgeliefert und sind nicht Teil dieses Repos; Informationen, Kauf und Verwaltung unter https://theme.michael-gahn.de (Konto erforderlich).
