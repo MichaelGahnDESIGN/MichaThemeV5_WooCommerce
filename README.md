@@ -73,3 +73,7 @@ Das ist keine Rechtsberatung; die Lizenzfrage wird noch rechtlich geprüft.
 ## Rechtliches
 
 Alle rechtlichen Angaben sind technische Hinweise zum Stand der Erstellung und keine Rechtsberatung. Vor Veröffentlichung von einer Anwältin oder einem Anwalt prüfen lassen.
+
+## Paketprüfung für Katalogfreigaben
+
+Der GitHub-Check `packages` baut das uploadfertige Begleitplugin einschließlich Theme und prüft Versionen, die vollständige Theme-Prüfliste und ausgeschlossene Entwicklungsdateien. Er läuft bei Pull Requests, auf `main` und bei neuen `v*`-Tags. Neue Katalogfreigaben benötigen zusätzlich die serverseitige Prüfung des veröffentlichten ZIPs gegen Git und SHA-256. Die bestehende Version 0.6.0 bleibt als bereits abgenommene Bestandsfreigabe erhalten; dieser CI-Nachweis wird nicht rückwirkend behauptet.
