@@ -18,8 +18,8 @@ function mt_license(): LicenseClient
         $client = new LicenseClient(
             $api,
             $domain,
-            static function (string $url): ?array {
-                $r = wp_remote_get($url, ['timeout' => 4, 'redirection' => 2, 'headers' => ['Accept' => 'application/json']]);
+            static function (string $url, array $request): ?array {
+                $r = wp_remote_post($url, ['timeout' => 4, 'redirection' => 0, 'sslverify' => true, 'limit_response_size' => 262144, 'headers' => $request['headers'], 'body' => $request['body']]);
                 if (is_wp_error($r)) {
                     return null;
                 }
