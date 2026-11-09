@@ -1,0 +1,30 @@
+name: WooCommerce-Pakete prüfen
+on:
+  pull_request:
+  push:
+    branches: [main]
+    tags: ['v*']
+permissions:
+  contents: read
+jobs:
+  packages:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - uses: shivammathur/setup-php@d52fc211a0436f8839a587b3b5b8efddab4744ea # v2
+        with:
+          php-version: '8.3'
+          extensions: zip
+          coverage: none
+      - name: Uploadpaket bauen und Inhalt prüfen
+        shell: bash
+        run: |
+          set -euo pipefail
+          version="$(sed -n 's/^Version: //p' style.css)"
+          bash tools/build-plugin-zip.sh HEAD "$version" "$RUNNER_TEMP/packages"
+          git archive --format=zip --prefix=michatheme-v5-woocommerce/ HEAD > "$RUNNER_TEMP/packages/michatheme-v5-woocommerce-$version.zip"
+          python3 tools/check-packages.py "$RUNNER_TEMP/packages" "$version"
+          git ls-files -z '*.php' | xargs -0 -n1 php -l
