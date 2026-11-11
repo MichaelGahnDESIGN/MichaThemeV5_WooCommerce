@@ -2,6 +2,27 @@
 
 Hier steht, was sich von Version zu Version geändert hat. Das Theme ist noch in einer frühen Phase (Pre-Alpha). Bitte nicht in einem echten Shop einsetzen, ohne es vorher selbst zu testen.
 
+## 0.6.1 (11.11.2026, Pre-Alpha)
+
+Lizenzprüfung und Updates sicherer. Am Aussehen ändert sich nichts.
+
+**Geändert**
+
+- Der Lizenzcode steht nicht mehr in der Adresse (URL). Theme und Plugin schicken ihn nur noch per HTTPS im Kopfteil der Anfrage, ohne Weiterleitungen. [Details](docs/LIZENZTRANSPORT.md).
+- Updates des Plugins kommen jetzt über eine Prüfsummen-Datei auf theme.michael-gahn.de (`plugin-updates/michatheme-v5-woocommerce.json`). Das ZIP kommt vom GitHub-Release. Vor dem Entpacken prüft das Plugin Größe, SHA-256-Prüfsumme und alle Pfade im ZIP. Stimmt etwas nicht, bricht WordPress ab und die bisherige Version bleibt.
+- Kein stilles Update: Automatische WordPress-Updates sind für dieses Plugin abgeschaltet. Sie sehen das Update unter Plugins und klicken selbst auf „Jetzt aktualisieren“.
+- Der Customizer zeigt den Lizenzcode nicht mehr im Klartext. Mit Plugin gibt es dort kein Feld mehr (Code unter MichaThemeV5, Lizenzen), ohne Plugin ein Passwortfeld.
+
+**Behoben**
+
+- „Lizenzcode entfernen“ hat den alten Code aus der Theme-Einstellung stehen lassen. Das Theme hat dann weiter damit geprüft. Jetzt ist der Code überall weg.
+- Beim Löschen des Plugins geht der Lizenzcode nicht mehr verloren. Er wandert zurück in die Theme-Einstellung.
+- Ein Fehler im Zwischenspeicher führt im Customizer nicht mehr zu einem Absturz. Es gilt dann Free.
+
+**Wichtig**
+
+- ⚠️ Wer 0.6.0 hat, spielt dieses Update am besten einmal von Hand ein (Plugins, Installieren, Plugin hochladen). Ab 0.6.1 kommt der Update-Hinweis über die Prüfsummen-Datei.
+
 ## 0.6.0 (01.11.2026, Pre-Alpha)
 
 Neu: Demo-Artikel importieren und entfernen.
