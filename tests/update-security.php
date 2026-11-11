@@ -18,7 +18,7 @@ final class WP_Error
 {
     public function __construct(public string $code = '', public string $message = '') {}
 }
-function add_filter(string $hook, mixed $cb, int $prio = 10, int $args = 1): void { $GLOBALS['hooks'][$hook][] = $cb; }
+function add_filter(string $hook, mixed $cb, int $prio = 10, int $args = 1): void { $GLOBALS['hooks'][$hook][] = $cb; $GLOBALS['hook_prio'][$hook] = $prio; }
 function plugin_basename(string $file): string { return 'michatheme-v5/michatheme-v5.php'; }
 function get_site_transient(string $k): mixed { return $GLOBALS['site_transients'][$k] ?? false; }
 function set_site_transient(string $k, mixed $v, int $ttl): void { $GLOBALS['site_transients'][$k] = $v; }
@@ -106,11 +106,29 @@ foreach ([['../evil.php' => 'x'], ['michatheme-v5/../evil.php' => 'x'], ['other/
 }
 check(MT_Updater::zip_safe($good), 'Sauberes ZIP erlaubt');
 
+// Fremdes Plugin liefert schon eine Datei: die wird auch geprüft
+$GLOBALS['site_transients'] = [];
+$GLOBALS['remote_reply'] = ['status' => 200, 'body' => json_encode($feed)];
+$foreign = tempnam(sys_get_temp_dir(), 'mt-fremd-');
+copy($evil, $foreign);
+check(MT_Updater::verify_download($foreign, $url, null) instanceof WP_Error, 'Vorab gelieferte falsche Datei wird abgelehnt');
+$foreignOk = tempnam(sys_get_temp_dir(), 'mt-fremd-');
+copy($good, $foreignOk);
+check(MT_Updater::verify_download($foreignOk, $url, null) === $foreignOk, 'Vorab gelieferte richtige Datei wird durchgelassen');
+check(MT_Updater::verify_download(new WP_Error('x'), $url, null) instanceof WP_Error, 'Fehler eines anderen Filters bleibt Fehler');
+
+// Alter Zwischenspeicher ohne Prüfsumme wird nicht übernommen
+$GLOBALS['site_transients'] = ['michatheme_v5_release' => ['version' => '0.6.0', 'package' => $url, 'slug' => 'michatheme-v5']];
+$GLOBALS['remote'] = [];
+$offer = MT_Updater::offer(false, [], 'michatheme-v5/michatheme-v5.php');
+check(count($GLOBALS['remote']) === 1 && ($GLOBALS['site_transients']['michatheme_v5_release']['sha256'] ?? '') === $feed['sha256'], 'Alter Zwischenspeicher wird neu geladen');
+
 // Kein stilles Update
 check(MT_Updater::no_auto_update(true, (object) ['plugin' => 'michatheme-v5/michatheme-v5.php']) === false, 'Automatische WordPress-Updates für dieses Plugin aus');
 check(MT_Updater::no_auto_update(true, (object) ['plugin' => 'andere/andere.php']) === true, 'Andere Plugins behalten ihre Einstellung');
 
 MT_Updater::boot();
+check(($GLOBALS['hook_prio']['upgrader_pre_download'] ?? 0) === PHP_INT_MAX, 'Prüfung läuft als letzter Filter');
 foreach (['update_plugins_theme.michael-gahn.de', 'upgrader_pre_download', 'auto_update_plugin'] as $hook) {
     check(isset($GLOBALS['hooks'][$hook]), 'Filter angemeldet: ' . $hook);
 }

@@ -19,7 +19,8 @@ final class MT_Updater
     {
         // Hostname aus "Update URI" im Plugin-Kopf
         add_filter('update_plugins_theme.michael-gahn.de', [self::class, 'offer'], 30, 3);
-        add_filter('upgrader_pre_download', [self::class, 'verify_download'], 10, 3);
+        // als letzter Filter, damit kein anderes Plugin die Prüfung überspringt
+        add_filter('upgrader_pre_download', [self::class, 'verify_download'], PHP_INT_MAX, 3);
         add_filter('auto_update_plugin', [self::class, 'no_auto_update'], 99, 2);
     }
 
@@ -62,7 +63,8 @@ final class MT_Updater
     private static function release(): array
     {
         $release = get_site_transient(self::KEY);
-        if (is_array($release)) {
+        // alter Eintrag (ohne sha256/size) zählt nicht
+        if (is_array($release) && ($release === [] || self::cached_ok($release))) {
             return $release;
         }
         $release = [];
@@ -76,6 +78,16 @@ final class MT_Updater
         return $release;
     }
 
+    private static function cached_ok(array $r): bool
+    {
+        $v = (string) ($r['version'] ?? '');
+
+        return preg_match('/^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$/D', $v) === 1
+            && ($r['package'] ?? '') === 'https://github.com/' . self::REPO . '/releases/download/v' . $v . '/michatheme-v5-plugin-' . $v . '.zip'
+            && is_string($r['sha256'] ?? null) && preg_match('/^[a-f0-9]{64}$/D', $r['sha256']) === 1
+            && is_int($r['size'] ?? null) && $r['size'] > 0 && $r['size'] <= self::MAX_BYTES;
+    }
+
     /**
      * upgrader_pre_download: unser Paket selbst laden und prüfen, bevor WordPress entpackt.
      * Bei Fehler bricht WordPress ab, die alte Version bleibt unverändert.
@@ -84,15 +96,24 @@ final class MT_Updater
      */
     public static function verify_download($reply, $package, $upgrader)
     {
-        if ($reply !== false || !is_string($package) || !str_starts_with($package, 'https://github.com/' . self::REPO . '/releases/download/')) {
+        if (is_wp_error($reply) || !is_string($package) || !str_starts_with($package, 'https://github.com/' . self::REPO . '/releases/download/')) {
             return $reply;
         }
         // unser Paket nie ungeprüft durchlassen, auch wenn der Zwischenspeicher leer ist
         $release = self::release();
         if (($release['package'] ?? '') !== $package) {
+            if (is_string($reply) && is_file($reply)) {
+                @unlink($reply);
+            }
+
             return new WP_Error('mt_update_unknown', 'Für dieses Update-Paket gibt es keine passende Prüfsumme. Die installierte Version bleibt unverändert.');
         }
-        $tmp = download_url($package, 60);
+        if ($reply !== false) {
+            // ein anderes Plugin hat schon geladen: genau diese Datei prüfen
+            $tmp = is_string($reply) && is_file($reply) ? $reply : new WP_Error('mt_update_foreign', 'Das Update-Paket wurde von einem anderen Plugin geladen und kann nicht geprüft werden.');
+        } else {
+            $tmp = download_url($package, 60);
+        }
         if (is_wp_error($tmp)) {
             return $tmp;
         }

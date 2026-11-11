@@ -16,6 +16,10 @@ add_action('customize_register', function (WP_Customize_Manager $wp): void {
     }
     $expert = static fn (): bool => (bool) get_theme_mod('mt_expert_mode', false);
     foreach ($cat['options'] as $id => $o) {
+        // Lizenzcode mit Plugin nur auf der Seite Lizenzen, sonst stünde er in den Customizer-Daten
+        if ($id === 'license_token' && class_exists('MT_Bridge', false)) {
+            continue;
+        }
         $args = [
             'default' => $o['default'],
             'transport' => 'refresh',
@@ -56,10 +60,6 @@ add_action('customize_register', function (WP_Customize_Manager $wp): void {
                     break;
                 }
                 if ($id === 'license_token') {
-                    // mit Plugin gehört der Code auf die Seite Lizenzen, hier gar kein Feld (auch kein hidden, das stünde im HTML)
-                    if (class_exists('MT_Bridge', false)) {
-                        break;
-                    }
                     $ctl['description'] = mt_license_status_text() . ' ' . $o['help'];
                     $wp->add_control($o['key'], $ctl + ['type' => 'password']);
                     break;

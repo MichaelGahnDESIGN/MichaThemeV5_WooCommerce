@@ -31,3 +31,4 @@ jobs:
           php tests/license-transport.php
           php tests/license-admin.php
           php tests/update-security.php
+          php tests/license-grace.php

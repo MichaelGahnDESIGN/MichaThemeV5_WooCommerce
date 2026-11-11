@@ -60,8 +60,10 @@ final class MT_License
         }
         $old = get_theme_mod('mt-license-token', '');
         if (is_string($old) && Sanitizer::licenseFormat(trim($old))) {
-            update_option(self::OPT, trim($old), false);
-            remove_theme_mod('mt-license-token');
+            // Original nur weg, wenn die Kopie wirklich gespeichert ist
+            if (update_option(self::OPT, trim($old), false) && self::token() === trim($old)) {
+                remove_theme_mod('mt-license-token');
+            }
         }
     }
 

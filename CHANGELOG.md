@@ -16,8 +16,9 @@ Lizenzprüfung und Updates sicherer. Am Aussehen ändert sich nichts.
 **Behoben**
 
 - „Lizenzcode entfernen“ hat den alten Code aus der Theme-Einstellung stehen lassen. Das Theme hat dann weiter damit geprüft. Jetzt ist der Code überall weg.
-- Beim Löschen des Plugins geht der Lizenzcode nicht mehr verloren. Er wandert zurück in die Theme-Einstellung.
+- Beim Löschen des Plugins geht der Lizenzcode nicht mehr verloren. Er wandert zurück in die Einstellungen des MichaTheme.
 - Ein Fehler im Zwischenspeicher führt im Customizer nicht mehr zu einem Absturz. Es gilt dann Free.
+- Ist der Lizenzserver länger weg, wird der Ausfall 2 Minuten gemerkt. So wartet nicht jeder Aufruf bis zum Zeitlimit. Die Gnadenfrist von 48 Stunden bleibt gleich.
 
 **Wichtig**
 
