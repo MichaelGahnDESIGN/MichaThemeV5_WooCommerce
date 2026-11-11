@@ -29,3 +29,5 @@ jobs:
           python3 tools/check-packages.py "$RUNNER_TEMP/packages" "$version"
           git ls-files -z '*.php' | xargs -0 -n1 php -l
           php tests/license-transport.php
+          php tests/license-admin.php
+          php tests/update-security.php

@@ -9,7 +9,7 @@
  * Author: Michael Gahn DESIGN
  * Author URI: https://michael-gahn.de
  * License: GPL-2.0-or-later
- * Update URI: https://github.com/MichaelGahnDESIGN/MichaThemeV5_WooCommerce
+ * Update URI: https://theme.michael-gahn.de/plugin-updates/michatheme-v5-woocommerce.json
  * Text Domain: michatheme-v5
  */
 
@@ -47,15 +47,17 @@ require_once MT_PLUGIN_DIR . 'includes/class-mt-updater.php';
 
 register_activation_hook(__FILE__, ['MT_Plugin', 'activate']);
 
-/** Start: nur im Admin etwas anhängen. Im Shop (Frontend) macht das Plugin nichts außer der Bridge. */
+/** Start: Admin-Teile nur im Admin. Im Shop (Frontend) macht das Plugin nichts außer der Bridge und den Update-Filtern. */
 final class MT_Plugin
 {
     public static function boot(): void
     {
         MT_Bridge::boot();
+        // Update-Filter auch im Cron, sonst fehlt der Hinweis nach wp_update_plugins
+        MT_Updater::boot();
         if (is_admin()) {
             MT_Admin::boot();
-            MT_Updater::boot();
+            add_action('admin_init', ['MT_License', 'migrate']);
         }
     }
 

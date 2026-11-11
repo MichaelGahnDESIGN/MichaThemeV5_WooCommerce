@@ -56,7 +56,11 @@ function mt_license_token(): string
 
 function mt_license_state(): array
 {
-    return mt_license()->state(mt_license_token());
+    try {
+        return mt_license()->state(mt_license_token());
+    } catch (\Throwable $e) {
+        return ['valid' => false, 'tier' => 'free', 'modules' => [], 'source' => 'none', 'reason' => 'unreachable']; // Shop bricht nie
+    }
 }
 
 /** Ist das Modul (z. B. eines separat ausgelieferten Add-ons) per Lizenz freigeschaltet? Im Theme selbst nutzt keine Funktion diese Prüfung. */

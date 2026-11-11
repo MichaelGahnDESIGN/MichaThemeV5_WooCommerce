@@ -43,17 +43,25 @@ final class MT_License
     public static function remove(): void
     {
         delete_option(self::OPT);
+        // alter Customizer-Wert muss mit weg, sonst prüft das Theme weiter damit
+        remove_theme_mod('mt-license-token');
     }
 
-    /** Einmalige Kopie aus der Theme-Einstellung (Original bleibt stehen). */
+    /** Einmaliger Umzug aus der Theme-Einstellung, danach kein Klartext mehr im Customizer. */
     public static function migrate(): void
     {
         if (self::has_token()) {
+            // Altlast aus früheren Versionen: gleiche Kopie im Customizer aufräumen
+            if (get_theme_mod('mt-license-token', '') === self::token()) {
+                remove_theme_mod('mt-license-token');
+            }
+
             return;
         }
         $old = get_theme_mod('mt-license-token', '');
         if (is_string($old) && Sanitizer::licenseFormat(trim($old))) {
             update_option(self::OPT, trim($old), false);
+            remove_theme_mod('mt-license-token');
         }
     }
 
