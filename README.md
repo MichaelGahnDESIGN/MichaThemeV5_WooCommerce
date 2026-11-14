@@ -2,11 +2,13 @@
 
 Theme von Michael Gahn DESIGN mit Hell-/Dunkelmodus, vielen Optionen und rechtssicherer Ausrichtung für DE und EU.
 
-**Status:** in Entwicklung (Pre-Alpha).
+**Version:** 1.4.0 (fertige Version, keine Vorabversion mehr).
 
-## Lizenztransport in Vorbereitung
+⚠️ Bitte vor jedem Update eine Sicherung von Shop und Datenbank machen. Neue Versionen am besten zuerst in einem Test-Shop ausprobieren.
 
-Der Entwicklungsstand stellt Lizenzprüfungen auf HTTPS-POST mit Autorisierungsheader um. Token stehen dabei nicht mehr in URLs. Theme und Begleitplugin müssen gemeinsam aktualisiert werden; vor der Veröffentlichung muss die Plattform den neuen Prüfweg unterstützen. Die bisherigen Release-Downloads bleiben unverändert. [Details und Grenzen](docs/LIZENZTRANSPORT.md).
+## Lizenzprüfung (ab Version 0.6.1)
+
+Die Lizenzprüfung läuft nur noch per HTTPS. Der Lizenzcode steht nicht in Adressen (URLs), sondern im Kopfteil der Anfrage. Theme und Plugin immer gemeinsam aktualisieren. [Details und Grenzen](docs/LIZENZTRANSPORT.md).
 
 ## Funktionen
 
@@ -23,7 +25,7 @@ Der Colorpicker ist ein Farbwähler. Er hat eine Farbfläche, einen Farbton-Regl
 
 Eingebunden ist er in der Einstellungsseite des Plugins MichaThemeV5: bei WooCommerce ab Plugin 0.5.0, bei JTL-Shop 5 ab Plugin 0.5.1 und bei Shopware 6 im Admin-Modul ab 0.5.1. Dort gibt es 16 Farbfelder je Hell und Dunkel. Ohne Plugin wählst du die Akzentfarbe wie bisher aus der Liste oder als eigene Farbe (HEX-Wert) in den Theme-Einstellungen. Bei Shopify gibt es den Colorpicker nicht: Der Theme-Editor hat einen eigenen Farbwähler, und gespeicherte Paletten sind dort nicht möglich.
 
-Ehrlich gesagt: Die Plugins sind Pre-Alpha und bisher nur in Test- und Demo-Umgebungen geprüft.
+Ehrlich gesagt: Die Plugins sind bisher in Test- und Demo-Umgebungen geprüft. Mach vor dem Einsatz in deinem Shop eine Sicherung.
 
 ## Icon-Leiste in der Kopfzeile (ab Version 0.4.0)
 

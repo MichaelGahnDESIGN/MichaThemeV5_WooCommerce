@@ -1,6 +1,25 @@
 # Änderungen
 
-Hier steht, was sich von Version zu Version geändert hat. Das Theme ist noch in einer frühen Phase (Pre-Alpha). Bitte nicht in einem echten Shop einsetzen, ohne es vorher selbst zu testen.
+Hier steht, was sich von Version zu Version geändert hat. Ältere Einträge bis 0.6.1 stammen aus der frühen Phase (Pre-Alpha).
+
+## 1.4.0 (14.11.2026)
+
+Erste fertige Version. Keine Vorabversion mehr.
+
+**Neu**
+
+- Einheitliche Versionsnummer: Alle Produkte von Michael Gahn DESIGN tragen jetzt dieselbe Nummer 1.4.0. So siehst du auf einen Blick, welche Versionen zusammengehören.
+- Theme und Plugin MichaThemeV5 sind jetzt eine fertige Version (vorher Pre-Alpha).
+
+**Geändert**
+
+- Seit 0.6.1 gibt es keine weiteren Änderungen an Funktionen oder Aussehen. Nur die Versionsnummer und die Texte sind neu.
+- Die Download-Dateien heißen wie bisher, nur mit der neuen Nummer: `michatheme-v5-plugin-1.4.0.zip` (Plugin mit Theme) und `michatheme-v5-woocommerce-1.4.0.zip` (nur Theme).
+
+**Wichtig**
+
+- ⚠️ Vor dem Update bitte eine Sicherung von Shop und Datenbank machen.
+- Wer 0.6.1 hat, bekommt das Update unter Plugins angezeigt und klickt selbst auf „Jetzt aktualisieren“. Wer eine ältere Version hat, spielt das Plugin-ZIP einmal von Hand ein (Plugins, Installieren, Plugin hochladen).
 
 ## 0.6.1 (11.11.2026, Pre-Alpha)
 
