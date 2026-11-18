@@ -17,6 +17,7 @@ Aktiv-Meldung für die kostenlose Version. Am Aussehen ändert sich nichts.
 
 - Die Update-Prüfung holt die Update-Datei höchstens einmal am Tag über die Aktiv-Meldung. Sonst und bei einer Störung kommt sie wie bisher aus der festen Datei. Prüfsumme, Größe, Pfade und „kein automatisches Update“ werden genauso geprüft wie vorher.
 - Beim Löschen des Plugins werden auch die Daten der Aktiv-Meldung entfernt.
+- Plugin-Empfehlungen kommen jetzt von der neuen Adresse für WooCommerce (wie bei JTL und Shopware) und werden alle 15 Minuten statt alle 6 Stunden aufgefrischt.
 
 **Wichtig**
 
