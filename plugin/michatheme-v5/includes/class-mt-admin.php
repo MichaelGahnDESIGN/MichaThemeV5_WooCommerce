@@ -141,6 +141,7 @@ final class MT_Admin
             echo '<div class="mtadm mtadm-page"><section class="mtadm-card"><h2>Das Theme MichaThemeV5 ist nicht aktiv</h2>'
                 . '<p>Die Einstellungen gehören zum Theme. Bitte richten Sie das Theme zuerst auf der Info-Seite ein oder aktivieren Sie es unter Design › Themes.</p>'
                 . '<p><a class="mtadm-primary" href="' . esc_url(self::url('info')) . '">Zur Info-Seite</a></p></section></div>';
+            echo self::install_card();
             self::wrap('MichaThemeV5 · Einstellungen', 'settings', (string) ob_get_clean());
 
             return;
@@ -166,7 +167,19 @@ final class MT_Admin
             'presetFormOpen' => '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '"><input type="hidden" name="action" value="mt_apply_preset">' . wp_nonce_field('mt_apply_preset', '_wpnonce', true, false),
             'mediaButtons' => true,
         ]);
+        echo self::install_card();
         self::wrap('MichaThemeV5 · Einstellungen', 'settings', (string) ob_get_clean());
+    }
+
+    // Schalter Aktiv-Meldung (Install-Client), eigenes Formular ausserhalb vom Einstellungs-Formular
+    private static function install_card(): string
+    {
+        $form = class_exists('MT_Install', false) ? MT_Install::settings_html() : '';
+        if ($form === '') {
+            return '';
+        }
+
+        return '<div class="mtadm"><section class="mtadm-card" aria-labelledby="mti-install"><h2 id="mti-install">Datenschutz: Aktiv-Meldung</h2>' . $form . '</section></div>';
     }
 
     public static function handle_save_settings(): void

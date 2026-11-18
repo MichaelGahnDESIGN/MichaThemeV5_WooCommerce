@@ -25,3 +25,6 @@ foreach (['cat_fresh', 'cat_good', 'cat_pause', 'cat_last_refresh', 'recheck'] a
     delete_transient('michatheme_v5_' . $t);
 }
 delete_site_transient('michatheme_v5_release');
+// Install-Client (Aktiv-Meldung): Zustand + Hinweis-Flag weg. Eintrag auf der Plattform räumt die 12-Monats-Löschfrist ab
+delete_option('mgd_install_michatheme_v5_woocommerce');
+delete_transient('mgd_install_notice_michatheme_v5_woocommerce');

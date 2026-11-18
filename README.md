@@ -2,7 +2,7 @@
 
 Theme von Michael Gahn DESIGN mit Hell-/Dunkelmodus, vielen Optionen und rechtssicherer Ausrichtung für DE und EU.
 
-**Version:** 1.4.0 (fertige Version, keine Vorabversion mehr).
+**Version:** 1.5.0
 
 ⚠️ Bitte vor jedem Update eine Sicherung von Shop und Datenbank machen. Neue Versionen am besten zuerst in einem Test-Shop ausprobieren.
 
@@ -52,6 +52,42 @@ Das Plugin bringt vier Seiten mit (WordPress-Menü „MichaThemeV5“):
 Datenschutz: Für die Lizenzprüfung gehen nur Lizenzcode und Domain an https://theme.michael-gahn.de. Die Empfehlungen werden nur im Admin geladen. Besucher deines Shops sind nicht betroffen.
 
 Verträglichkeit: Das Plugin lädt Skripte und Stile nur auf seinen eigenen Admin-Seiten. Im Shop und in Seitenbaukästen wie Divi oder Elementor tut es nichts.
+
+## Datenschutz: Aktiv-Meldung (ab Version 1.5.0)
+
+Kurz gesagt: Das **Plugin** MichaThemeV5 meldet sich höchstens einmal am Tag bei theme.michael-gahn.de. So wissen wir, wie viele Shops es nutzen, und können Updates bereitstellen.
+
+**Was wird gesendet?** Nur diese fünf Dinge:
+
+1. Plugin-Name (`michatheme-v5-woocommerce`)
+2. Version (z. B. 1.5.0)
+3. Shopsystem (`woocommerce`)
+4. Die Domain deines Shops (z. B. `mein-shop.de`)
+5. Eine zufällige Installations-ID (eine lange Zufallsnummer, nichts Persönliches)
+
+**Was wird nicht gesendet?** Keine Kundendaten, keine E-Mail-Adressen, keine Bestellungen, keine Shop-Inhalte, kein Lizenzcode.
+
+**Wann?**
+
+- Nur wenn du als Admin im WordPress-Adminbereich bist. Besucher deines Shops lösen nie etwas aus.
+- Beim ersten Mal bekommt das Plugin einen eigenen Schlüssel. Danach höchstens einmal am Tag „Ich bin noch aktiv“.
+- Ist die Plattform nicht erreichbar, passiert nichts Schlimmes. Das Plugin versucht es später noch einmal.
+
+**So schaltest du es ab:**
+
+1. Öffne im WordPress-Menü **MichaThemeV5**, dann **Einstellungen**.
+2. Ganz unten steht der Kasten **Datenschutz: Aktiv-Meldung**.
+3. Nimm den Haken bei „Installation bei Michael Gahn DESIGN melden“ weg.
+4. Klicke auf **Speichern**.
+
+Danach wird nichts mehr gesendet, und dein Eintrag auf der Plattform wird gelöscht. Plugin und Theme funktionieren genauso weiter wie vorher.
+
+**Gut zu wissen:**
+
+- Der Schalter ist ab Werk an.
+- Das **Theme allein** (ohne Plugin) meldet sich nie. Das macht nur das Plugin.
+- Updates: Das Plugin fragt die Update-Datei höchstens einmal am Tag über dieselbe Meldung ab. Sonst und bei einer Störung nimmt es wie bisher die feste Datei. Die Sicherheitsprüfungen (Prüfsumme, Größe, Pfade, kein automatisches Update) bleiben gleich.
+- Löschst du das Plugin, werden auch die gespeicherten Daten der Aktiv-Meldung entfernt. Einträge ohne Meldung seit 12 Monaten löscht die Plattform selbst.
 
 ## Demo-Artikel importieren und entfernen (ab Version 0.6.0)
 

@@ -21,4 +21,9 @@ for kind, name, root in [('plugin', f'michatheme-v5-plugin-{version}.zip', 'mich
             manifest = json.loads(files[theme + 'build-integrity.json'])
             actual = {n[len(theme):]: hashlib.sha256(b).hexdigest() for n, b in files.items() if n.startswith(theme) and n != theme + 'build-integrity.json'}
             assert manifest['version'] == version and manifest['files'] == actual
+            # Install-Client (Free-Lizenz) nur im Plugin, nur die WordPress-Anbindung
+            assert all(root + 'includes/install/' + f in files for f in ('InstallClient.php', 'Settings.php', 'CurlTransport.php', 'Platform/WordPress.php'))
+            assert not any(n.startswith(root + 'includes/install/Platform/') and n != root + 'includes/install/Platform/WordPress.php' for n in files)
+        else:
+            assert not any('/includes/install/' in n for n in files)
     print(name, len(files), 'Dateien geprüft')

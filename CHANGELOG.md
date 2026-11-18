@@ -2,6 +2,27 @@
 
 Hier steht, was sich von Version zu Version geändert hat. Ältere Einträge bis 0.6.1 stammen aus der frühen Phase (Pre-Alpha).
 
+## 1.5.0 (18.11.2026)
+
+Aktiv-Meldung für die kostenlose Version. Am Aussehen ändert sich nichts.
+
+**Neu**
+
+- Das Plugin meldet sich höchstens einmal am Tag bei theme.michael-gahn.de. Gesendet werden nur Plugin-Name, Version, Shopsystem, die Domain deines Shops und eine zufällige Installations-ID. Keine Kundendaten, keine E-Mail, keine Shop-Inhalte.
+- Neuer Schalter unter MichaThemeV5, Einstellungen, ganz unten im Kasten „Datenschutz: Aktiv-Meldung“. Ab Werk an. Nimmst du den Haken weg, wird nichts mehr gesendet und dein Eintrag auf der Plattform gelöscht.
+- Die Meldung läuft nur im Adminbereich. Besucher deines Shops lösen nie etwas aus. Plugin und Theme funktionieren immer voll, auch ohne Meldung.
+- Das Theme ohne Plugin meldet sich nie.
+
+**Geändert**
+
+- Die Update-Prüfung holt die Update-Datei höchstens einmal am Tag über die Aktiv-Meldung. Sonst und bei einer Störung kommt sie wie bisher aus der festen Datei. Prüfsumme, Größe, Pfade und „kein automatisches Update“ werden genauso geprüft wie vorher.
+- Beim Löschen des Plugins werden auch die Daten der Aktiv-Meldung entfernt.
+
+**Wichtig**
+
+- ⚠️ Vor dem Update bitte eine Sicherung von Shop und Datenbank machen.
+- Details stehen in der README im Abschnitt „Datenschutz: Aktiv-Meldung“.
+
 ## 1.4.0 (14.11.2026)
 
 Erste fertige Version. Keine Vorabversion mehr.

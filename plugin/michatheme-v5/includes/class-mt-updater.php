@@ -68,9 +68,17 @@ final class MT_Updater
             return $release;
         }
         $release = [];
-        $r = wp_safe_remote_get(self::FEED_URL, ['timeout' => 8, 'redirection' => 0, 'limit_response_size' => 65536, 'headers' => ['Accept' => 'application/json']]);
-        if (!is_wp_error($r) && wp_remote_retrieve_response_code($r) === 200) {
-            $b = json_decode(wp_remote_retrieve_body($r), true);
+        // Install-Client: gleicher JSON-Text über die Zähl-Adresse (nur Admin, max 1x am Tag), sonst die feste Datei
+        $body = class_exists('MT_Install', false) ? MT_Install::feed() : null;
+        if ($body === null) {
+            $r = wp_safe_remote_get(self::FEED_URL, ['timeout' => 8, 'redirection' => 0, 'limit_response_size' => 65536, 'headers' => ['Accept' => 'application/json']]);
+            if (!is_wp_error($r) && wp_remote_retrieve_response_code($r) === 200) {
+                $body = wp_remote_retrieve_body($r);
+            }
+        }
+        if (is_string($body)) {
+            // Prüfung bleibt dieselbe, egal woher der Text kommt
+            $b = json_decode($body, true);
             $release = is_array($b) ? (self::parse_feed($b) ?? []) : [];
         }
         set_site_transient(self::KEY, $release, $release ? 6 * HOUR_IN_SECONDS : 15 * MINUTE_IN_SECONDS);

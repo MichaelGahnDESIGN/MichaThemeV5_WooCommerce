@@ -2,8 +2,8 @@
 /**
  * Plugin Name: MichaThemeV5
  * Plugin URI: https://theme.michael-gahn.de
- * Description: Übersichtliche Einstellungsseite, Lizenzverwaltung und Plugin-Empfehlungen für das Theme MichaThemeV5. Das Theme funktioniert auch ohne dieses Plugin.
- * Version: 1.4.0
+ * Description: Übersichtliche Einstellungsseite, Lizenzverwaltung und Plugin-Empfehlungen für das Theme MichaThemeV5. Das Theme funktioniert auch ohne dieses Plugin. Meldet sich höchstens einmal am Tag bei theme.michael-gahn.de (Plugin, Version, Shopsystem, Domain, zufällige ID). Abschaltbar in den Einstellungen.
+ * Version: 1.5.0
  * Requires at least: 6.4
  * Requires PHP: 8.1
  * Author: Michael Gahn DESIGN
@@ -15,9 +15,9 @@
 
 defined('ABSPATH') || exit;
 
-define('MT_PLUGIN_VERSION', '1.4.0');
+define('MT_PLUGIN_VERSION', '1.5.0');
 // Theme-Version, die im Plugin-ZIP mitgeliefert wird, und die kleinste Version, mit der das Plugin zusammenarbeitet
-define('MT_PLUGIN_THEME_BUNDLED', '1.4.0');
+define('MT_PLUGIN_THEME_BUNDLED', '1.5.0');
 define('MT_PLUGIN_THEME_MIN', '0.5.0');
 define('MT_PLUGIN_FILE', __FILE__);
 define('MT_PLUGIN_DIR', plugin_dir_path(__FILE__));
@@ -44,8 +44,16 @@ require_once MT_PLUGIN_DIR . 'includes/class-mt-bridge.php';
 require_once MT_PLUGIN_DIR . 'includes/class-mt-theme-installer.php';
 require_once MT_PLUGIN_DIR . 'includes/class-mt-admin.php';
 require_once MT_PLUGIN_DIR . 'includes/class-mt-updater.php';
+require_once MT_PLUGIN_DIR . 'includes/class-mt-install.php';
 
 register_activation_hook(__FILE__, ['MT_Plugin', 'activate']);
+
+// Install-Client (Free-Lizenz) - Aktiv-Meldung nur im Admin, max 1x am Tag, Schalter auf der Einstellungsseite
+try {
+    \MichaThemeV5\Plugin\Install\Platform\WordPress::boot(__FILE__, 'michatheme-v5-woocommerce', 'woocommerce', MT_PLUGIN_VERSION, admin_url('admin.php?page=michatheme-v5'));
+} catch (\Throwable $e) {
+    // egal, Plugin läuft trotzdem voll
+}
 
 /** Start: Admin-Teile nur im Admin. Im Shop (Frontend) macht das Plugin nichts außer der Bridge und den Update-Filtern. */
 final class MT_Plugin
