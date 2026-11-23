@@ -7,12 +7,13 @@
 
 defined('ABSPATH') || exit;
 
-define('MT_VERSION', '1.5.0');
+define('MT_VERSION', '1.5.1');
 
 require_once __DIR__ . '/inc/options.php';
 require_once __DIR__ . '/inc/license.php';
 require_once __DIR__ . '/inc/customizer.php';
 require_once __DIR__ . '/inc/setup.php';
+require_once __DIR__ . '/inc/favicon.php';
 require_once __DIR__ . '/inc/legal.php';
 require_once __DIR__ . '/inc/woocommerce.php';
 require_once __DIR__ . '/inc/notification-center.php';

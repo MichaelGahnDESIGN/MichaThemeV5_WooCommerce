@@ -32,4 +32,5 @@ jobs:
           php tests/license-admin.php
           php tests/update-security.php
           php tests/license-grace.php
+          php tests/favicon.php
           php tests/install-client.php

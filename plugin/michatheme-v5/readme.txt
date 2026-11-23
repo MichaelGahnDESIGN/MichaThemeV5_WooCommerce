@@ -3,7 +3,7 @@ Contributors: michaelgahndesign
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.5.0
+Stable tag: 1.5.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,6 +18,9 @@ Meldet sich höchstens einmal am Tag bei theme.michael-gahn.de (Plugin, Version,
 Datenschutz: Zur Lizenzprüfung gehen nur Lizenzcode und Domain an https://theme.michael-gahn.de. Die Plugin-Empfehlungen werden nur im Admin geladen. Besucher Ihres Shops sind nicht betroffen.
 
 == Changelog ==
+
+= 1.5.1 =
+* Favicon: Ab Werk zeigt der Shop das Michael-Gahn-DESIGN-Logo. Eigenes Icon unter Design > Customizer > Website-Identität > Website-Icon. Ohne eigenes Icon erscheint wieder das Logo.
 
 = 1.5.0 =
 * Neu: Aktiv-Meldung. Das Plugin meldet sich höchstens einmal am Tag bei theme.michael-gahn.de (Plugin, Version, Shopsystem, Domain, zufällige ID). Nur im Admin.

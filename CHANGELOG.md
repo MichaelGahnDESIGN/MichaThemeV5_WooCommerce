@@ -2,6 +2,13 @@
 
 Hier steht, was sich von Version zu Version geändert hat. Ältere Einträge bis 0.6.1 stammen aus der frühen Phase (Pre-Alpha).
 
+## 1.5.1 (23.11.2026)
+
+**Neu**
+
+- Favicon: Ab Werk zeigt der Shop das Michael-Gahn-DESIGN-Logo im Browser-Tab (vorher das WordPress-Logo oder gar keins).
+- Eigenes Favicon: Design > Customizer > Website-Identität > Website-Icon. Das ist die normale WordPress-Funktion. Entfernst du dein Icon wieder, erscheint automatisch das Logo.
+
 ## 1.5.0 (18.11.2026)
 
 Aktiv-Meldung für die kostenlose Version. Am Aussehen ändert sich nichts.

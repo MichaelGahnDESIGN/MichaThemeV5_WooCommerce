@@ -2,7 +2,7 @@
 
 Theme von Michael Gahn DESIGN mit Hell-/Dunkelmodus, vielen Optionen und rechtssicherer Ausrichtung für DE und EU.
 
-**Version:** 1.5.0
+**Version:** 1.5.1
 
 ⚠️ Bitte vor jedem Update eine Sicherung von Shop und Datenbank machen. Neue Versionen am besten zuerst in einem Test-Shop ausprobieren.
 
@@ -52,6 +52,18 @@ Das Plugin bringt vier Seiten mit (WordPress-Menü „MichaThemeV5“):
 Datenschutz: Für die Lizenzprüfung gehen nur Lizenzcode und Domain an https://theme.michael-gahn.de. Die Empfehlungen werden nur im Admin geladen. Besucher deines Shops sind nicht betroffen.
 
 Verträglichkeit: Das Plugin lädt Skripte und Stile nur auf seinen eigenen Admin-Seiten. Im Shop und in Seitenbaukästen wie Divi oder Elementor tut es nichts.
+
+## Favicon (ab Version 1.5.1)
+
+Das Favicon ist das kleine Bild im Browser-Tab.
+
+- Ab Werk zeigt der Shop das Michael-Gahn-DESIGN-Logo.
+- Eigenes Favicon:
+  1. WordPress-Admin öffnen.
+  2. Design > Customizer > Website-Identität.
+  3. Bei „Website-Icon“ ein Bild wählen (quadratisch, mindestens 512 × 512 Pixel).
+  4. Veröffentlichen.
+- Entfernst du dein Icon wieder, erscheint automatisch das Logo.
 
 ## Datenschutz: Aktiv-Meldung (ab Version 1.5.0)
 
