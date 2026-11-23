@@ -134,7 +134,8 @@ foreach (['update_plugins_theme.michael-gahn.de', 'upgrader_pre_download', 'auto
 }
 $main = (string) file_get_contents(dirname(__DIR__) . '/plugin/michatheme-v5/michatheme-v5.php');
 check(str_contains($main, 'Update URI: https://theme.michael-gahn.de/plugin-updates/michatheme-v5-woocommerce.json'), 'Update URI zeigt auf die Prüfsummen-Datei');
-check(preg_match('/MT_Updater::boot\(\);\s*\n\s*if \(is_admin\(\)\)/', $main) === 1, 'Updater auch im Cron angemeldet (nicht nur im Admin)');
+// seit 1.6.0 meldet der Baukasten den Updater an, MT_Updater bleibt nur testbar (siehe tests/bruecke-baukasten.php)
+check(!str_contains($main, 'MT_Updater::boot'), 'Alter Updater wird im Hauptplugin nicht mehr angemeldet');
 
 echo "\n" . ($fails === 0 ? 'Alles gut.' : $fails . ' Fehler.') . "\n";
 exit($fails === 0 ? 0 : 1);

@@ -2,7 +2,7 @@
 /** AUTOMATISCH ERZEUGT aus themes/core/options.json (php bin/build-themes.php). Nicht von Hand ändern. */
 
 return [
-    'version' => '1.5.1',
+    'version' => '1.6.0',
     'groups' => [
         'colors' => [
             'label' => 'Farben',

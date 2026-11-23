@@ -2,8 +2,8 @@
 /**
  * Plugin Name: MichaThemeV5
  * Plugin URI: https://theme.michael-gahn.de
- * Description: Übersichtliche Einstellungsseite, Lizenzverwaltung und Plugin-Empfehlungen für das Theme MichaThemeV5. Das Theme funktioniert auch ohne dieses Plugin. Meldet sich höchstens einmal am Tag bei theme.michael-gahn.de (Plugin, Version, Shopsystem, Domain, zufällige ID). Abschaltbar in den Einstellungen.
- * Version: 1.5.1
+ * Description: Übersichtliche Einstellungsseite, Lizenzverwaltung und Plugin-Empfehlungen für das Theme MichaThemeV5. Das Theme funktioniert auch ohne dieses Plugin. Meldet sich höchstens einmal am Tag bei theme.michael-gahn.de (Plugin, Version, Shopsystem, Domain, zufällige ID). Abschaltbar unter Updates und Weitere Plugins.
+ * Version: 1.6.0
  * Requires at least: 6.4
  * Requires PHP: 8.1
  * Author: Michael Gahn DESIGN
@@ -15,9 +15,9 @@
 
 defined('ABSPATH') || exit;
 
-define('MT_PLUGIN_VERSION', '1.5.1');
+define('MT_PLUGIN_VERSION', '1.6.0');
 // Theme-Version, die im Plugin-ZIP mitgeliefert wird, und die kleinste Version, mit der das Plugin zusammenarbeitet
-define('MT_PLUGIN_THEME_BUNDLED', '1.5.1');
+define('MT_PLUGIN_THEME_BUNDLED', '1.6.0');
 define('MT_PLUGIN_THEME_MIN', '0.5.0');
 define('MT_PLUGIN_FILE', __FILE__);
 define('MT_PLUGIN_DIR', plugin_dir_path(__FILE__));
@@ -45,24 +45,24 @@ require_once MT_PLUGIN_DIR . 'includes/class-mt-theme-installer.php';
 require_once MT_PLUGIN_DIR . 'includes/class-mt-admin.php';
 require_once MT_PLUGIN_DIR . 'includes/class-mt-updater.php';
 require_once MT_PLUGIN_DIR . 'includes/class-mt-install.php';
+require_once MT_PLUGIN_DIR . 'includes/class-mt-legacy.php';
+// Baukasten (Kit) laden
+require_once MT_PLUGIN_DIR . 'includes/kit-autoload.php';
 
 register_activation_hook(__FILE__, ['MT_Plugin', 'activate']);
 
-// Install-Client (Free-Lizenz) - Aktiv-Meldung nur im Admin, max 1x am Tag, Schalter auf der Einstellungsseite
-try {
-    \MichaThemeV5\Plugin\Install\Platform\WordPress::boot(__FILE__, 'michatheme-v5-woocommerce', 'woocommerce', MT_PLUGIN_VERSION, admin_url('admin.php?page=michatheme-v5'));
-} catch (\Throwable $e) {
-    // egal, Plugin läuft trotzdem voll
-}
+// Alter Install-Client (includes/install, MT_Install) ist abgeschaltet, den Install-Melder startet jetzt Setup::updater() vom Baukasten
 
 /** Start: Admin-Teile nur im Admin. Im Shop (Frontend) macht das Plugin nichts außer der Bridge und den Update-Filtern. */
 final class MT_Plugin
 {
+    // Updater vom Baukasten, null wenn er nicht starten konnte
+    public static ?\Mgd\MichaThemeV5\Kit\Platform\WordPress\Updater $updater = null;
+
     public static function boot(): void
     {
         MT_Bridge::boot();
-        // Update-Filter auch im Cron, sonst fehlt der Hinweis nach wp_update_plugins
-        MT_Updater::boot();
+        // alter MT_Updater bleibt als Klasse da (Tests), wird aber nicht mehr angemeldet
         if (is_admin()) {
             MT_Admin::boot();
             add_action('admin_init', ['MT_License', 'migrate']);
@@ -86,3 +86,13 @@ final class MT_Plugin
 }
 
 MT_Plugin::boot();
+
+// Baukasten: Updater + Hinweis + Install-Melder in einem Aufruf. Dashboard-Seite = Menüpunkt "Updates und Weitere Plugins" > MT_Admin
+try {
+    MT_Plugin::$updater = \Mgd\MichaThemeV5\Kit\Platform\WordPress\Setup::updater(__FILE__, 'michatheme-v5-woocommerce', 'woocommerce', MT_PLUGIN_VERSION, 'MichaThemeV5', admin_url('admin.php?page=michatheme-v5-updates'));
+    // alte Zwischenspeicher weg, 1x pro Version. Kit nimmt nur mgd_ Namen, die michatheme_v5_ Reste räumt MT_Legacy::clean() selbst
+    \Mgd\MichaThemeV5\Kit\Platform\WordPress\Setup::cleanupLegacy('michatheme-v5-woocommerce', MT_PLUGIN_VERSION, MT_Legacy::NAMES);
+    add_action('admin_init', ['MT_Legacy', 'clean']);
+} catch (\Throwable $e) {
+    // Baukasten kaputt > Plugin läuft trotzdem voll
+}

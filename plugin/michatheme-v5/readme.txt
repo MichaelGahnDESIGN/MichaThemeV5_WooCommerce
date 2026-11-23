@@ -3,7 +3,7 @@ Contributors: michaelgahndesign
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.5.1
+Stable tag: 1.6.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,11 +13,18 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 Das Plugin ergänzt das Theme MichaThemeV5 um eine Einstellungsseite (durchsuchbar, mit Einfach- und Experten-Ansicht), eine Seite für den Lizenzcode, Plugin-Empfehlungen und eine Info-Seite. Das Theme funktioniert auch ohne das Plugin.
 
-Meldet sich höchstens einmal am Tag bei theme.michael-gahn.de (Plugin, Version, Shopsystem, Domain, zufällige ID). Abschaltbar in den Einstellungen.
+Meldet sich höchstens einmal am Tag bei theme.michael-gahn.de (Plugin, Version, Shopsystem, Domain, zufällige ID). Abschaltbar unter Updates und Weitere Plugins.
 
 Datenschutz: Zur Lizenzprüfung gehen nur Lizenzcode und Domain an https://theme.michael-gahn.de. Die Plugin-Empfehlungen werden nur im Admin geladen. Besucher Ihres Shops sind nicht betroffen.
 
 == Changelog ==
+
+= 1.6.0 =
+* Neu: Menüpunkt „Updates und Weitere Plugins“ (Info, Updates, Weitere Plugins, Installation melden) über den gemeinsamen Baukasten.
+* Der Schalter „Installation melden“ steht jetzt nur noch dort, nicht mehr unten in den Einstellungen. Zustand und Installations-ID bleiben.
+* Update-Prüfung und Aktiv-Meldung laufen über den Baukasten. Prüfsumme, Größe und Pfade werden weiter geprüft, automatische Updates bleiben aus.
+* Beim Löschen des Plugins wird die Installation abgemeldet.
+* Einstellungen, Farben und Lizenzcode bleiben erhalten. Vor dem Update bitte eine Sicherung machen.
 
 = 1.5.1 =
 * Favicon: Ab Werk zeigt der Shop das Michael-Gahn-DESIGN-Logo. Eigenes Icon unter Design > Customizer > Website-Identität > Website-Icon. Ohne eigenes Icon erscheint wieder das Logo.

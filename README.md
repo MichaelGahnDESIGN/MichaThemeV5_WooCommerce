@@ -2,7 +2,7 @@
 
 Theme von Michael Gahn DESIGN mit Hell-/Dunkelmodus, vielen Optionen und rechtssicherer Ausrichtung für DE und EU.
 
-**Version:** 1.5.1
+**Version:** 1.6.0
 
 ⚠️ Bitte vor jedem Update eine Sicherung von Shop und Datenbank machen. Neue Versionen am besten zuerst in einem Test-Shop ausprobieren.
 
@@ -47,7 +47,7 @@ Das Plugin bringt vier Seiten mit (WordPress-Menü „MichaThemeV5“):
 1. **Einstellungen**: alle Optionen, gruppiert, mit Suche, Ansicht „Einfach“ oder „Experte“, Filter und Live-Hinweisen. Oben stehen die **Design-Presets** (Standard, Glas, Kompakt): ein Klick setzt mehrere Einstellungen. Vorher wird automatisch gesichert. Dazu kommen drei Layout-Einstellungen: **Kartenstil** (flach, mit Rahmen, mit Schatten), **Flächenstil** (einfarbig oder Glas) und **Inhaltsbreite** (schmal, normal, breit).
 2. **Eigene Farben** (Gruppe in den Einstellungen): 16 Farben, je für Hell und Dunkel einzeln. Leer heißt: Standard des Themes. Mit Colorpicker, einer Palette für 12 Farben (gilt für den ganzen Shop) und einer Vorschau. Die Warnung zeigt dir, wenn Text zu schwach zu lesen wäre (Text mindestens 4,5 zu 1, Rahmen und Fokus mindestens 3 zu 1). Gespeichert wird trotzdem.
 3. **Lizenzen**: Lizenzcode einfügen, Status sehen, Link zum Kauf. Ohne Code läuft alles in der Free-Version.
-4. **Plugin-Empfehlungen** und **Info** (Versionen, Theme einrichten, Einstellungen wiederherstellen).
+4. **Updates und Weitere Plugins** (mit dem Schalter „Installation melden“) und **Info** (Versionen, Theme einrichten, Einstellungen wiederherstellen).
 
 Datenschutz: Für die Lizenzprüfung gehen nur Lizenzcode und Domain an https://theme.michael-gahn.de. Die Empfehlungen werden nur im Admin geladen. Besucher deines Shops sind nicht betroffen.
 
@@ -65,7 +65,7 @@ Das Favicon ist das kleine Bild im Browser-Tab.
   4. Veröffentlichen.
 - Entfernst du dein Icon wieder, erscheint automatisch das Logo.
 
-## Datenschutz: Aktiv-Meldung (ab Version 1.5.0)
+## Datenschutz: Aktiv-Meldung (ab Version 1.5.0, Schalter im neuen Dashboard ab 1.6.0)
 
 Kurz gesagt: Das **Plugin** MichaThemeV5 meldet sich höchstens einmal am Tag bei theme.michael-gahn.de. So wissen wir, wie viele Shops es nutzen, und können Updates bereitstellen.
 
@@ -87,10 +87,12 @@ Kurz gesagt: Das **Plugin** MichaThemeV5 meldet sich höchstens einmal am Tag be
 
 **So schaltest du es ab:**
 
-1. Öffne im WordPress-Menü **MichaThemeV5**, dann **Einstellungen**.
-2. Ganz unten steht der Kasten **Datenschutz: Aktiv-Meldung**.
+1. Öffne im WordPress-Menü **MichaThemeV5**, dann **Updates und Weitere Plugins**.
+2. Dort steht der Bereich **Installation melden**.
 3. Nimm den Haken bei „Installation bei Michael Gahn DESIGN melden“ weg.
 4. Klicke auf **Speichern**.
+
+Seit Version 1.6.0 gibt es den Schalter nur noch an dieser Stelle. Unten in den Einstellungen steht er nicht mehr.
 
 Danach wird nichts mehr gesendet, und dein Eintrag auf der Plattform wird gelöscht. Plugin und Theme funktionieren genauso weiter wie vorher.
 

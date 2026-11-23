@@ -3,6 +3,7 @@ defined('ABSPATH') || exit;
 
 use MichaThemeV5\Plugin\Install\Platform\WordPress;
 
+// ab 1.6.0 abgeschaltet (kein boot/ping mehr), das macht Setup::updater() vom Baukasten. Konstanten + due() bleiben fürs Testen
 // Install-Client Free-Lizenz, Code aus Pro > bin/build-install-client.php > includes/install
 // meldet nur Produkt, Version, Shopsystem, Domain + zufällige ID. Nur im Admin, max 1x am Tag. Fehler nie nach außen
 final class MT_Install

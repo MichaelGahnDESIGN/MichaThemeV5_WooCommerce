@@ -4,12 +4,12 @@ defined('ABSPATH') || exit;
 use MichaThemeV5\Plugin\{FieldRenderer, PageRenderer};
 
 /**
- * Menü und Seiten: Einstellungen · Lizenzen · Plugin-Empfehlungen · Info.
+ * Menü und Seiten: Einstellungen · Lizenzen · Updates und Weitere Plugins (Baukasten-Dashboard) · Info.
  * Jede Aktion: POST erzwingen, Rechte prüfen, Nonce prüfen. Meldungen kommen nur aus einer festen Liste (nie aus der URL).
  */
 final class MT_Admin
 {
-    private const SLUGS = ['settings' => 'michatheme-v5', 'license' => 'michatheme-v5-license', 'catalog' => 'michatheme-v5-catalog', 'info' => 'michatheme-v5-info'];
+    private const SLUGS = ['settings' => 'michatheme-v5', 'license' => 'michatheme-v5-license', 'catalog' => 'michatheme-v5-catalog', 'updates' => 'michatheme-v5-updates', 'info' => 'michatheme-v5-info'];
 
     private const MESSAGES = [
         'saved' => ['ok', 'Einstellungen gespeichert.'],
@@ -34,7 +34,8 @@ final class MT_Admin
         add_action('admin_enqueue_scripts', [self::class, 'assets']);
         add_action('admin_init', [self::class, 'redirect_after_activation']);
         add_filter('plugin_action_links_' . plugin_basename(MT_PLUGIN_FILE), [self::class, 'action_links']);
-        foreach (['save_settings', 'apply_preset', 'restore_settings', 'license', 'catalog_refresh', 'theme_copy', 'theme_activate'] as $a) {
+        // catalog_refresh ist abgeschaltet (alte Empfehlungsliste), Weitere Plugins macht das Baukasten-Dashboard
+        foreach (['save_settings', 'apply_preset', 'restore_settings', 'license', 'theme_copy', 'theme_activate'] as $a) {
             add_action('admin_post_mt_' . $a, [self::class, 'handle_' . $a]);
         }
     }
@@ -49,7 +50,8 @@ final class MT_Admin
         add_menu_page('MichaThemeV5', 'MichaThemeV5', 'manage_options', self::SLUGS['settings'], [self::class, 'page_settings'], 'dashicons-art', 58);
         add_submenu_page(self::SLUGS['settings'], 'Einstellungen', 'Einstellungen', 'manage_options', self::SLUGS['settings'], [self::class, 'page_settings']);
         add_submenu_page(self::SLUGS['settings'], 'Lizenzen', 'Lizenzen', 'manage_options', self::SLUGS['license'], [self::class, 'page_license']);
-        add_submenu_page(self::SLUGS['settings'], 'Plugin-Empfehlungen', 'Plugin-Empfehlungen', 'manage_options', self::SLUGS['catalog'], [self::class, 'page_catalog']);
+        // Dashboard vom Baukasten statt alter Plugin-Empfehlungen
+        add_submenu_page(self::SLUGS['settings'], 'Updates und Weitere Plugins', 'Updates und Weitere Plugins', 'manage_options', self::SLUGS['updates'], [self::class, 'page_updates']);
         add_submenu_page(self::SLUGS['settings'], 'Info', 'Info', 'manage_options', self::SLUGS['info'], [self::class, 'page_info']);
     }
 
@@ -107,14 +109,20 @@ final class MT_Admin
         exit;
     }
 
+    private static function nav(string $page): string
+    {
+        $h = '<nav class="nav-tab-wrapper" aria-label="MichaThemeV5 Bereiche">';
+        foreach (['settings' => 'Einstellungen', 'license' => 'Lizenzen', 'updates' => 'Updates und Weitere Plugins', 'info' => 'Info'] as $k => $lab) {
+            $h .= '<a class="nav-tab' . ($k === $page ? ' nav-tab-active' : '') . '" href="' . esc_url(self::url($k)) . '"' . ($k === $page ? ' aria-current="page"' : '') . '>' . esc_html($lab) . '</a>';
+        }
+
+        return $h . '</nav>';
+    }
+
     private static function wrap(string $title, string $page, string $body): void
     {
         echo '<div class="wrap"><h1>' . esc_html($title) . '</h1>';
-        echo '<nav class="nav-tab-wrapper" aria-label="MichaThemeV5 Bereiche">';
-        foreach (['settings' => 'Einstellungen', 'license' => 'Lizenzen', 'catalog' => 'Plugin-Empfehlungen', 'info' => 'Info'] as $k => $lab) {
-            echo '<a class="nav-tab' . ($k === $page ? ' nav-tab-active' : '') . '" href="' . esc_url(self::url($k)) . '"' . ($k === $page ? ' aria-current="page"' : '') . '>' . esc_html($lab) . '</a>';
-        }
-        echo '</nav>';
+        echo self::nav($page);
         $msg = isset($_GET['mt_msg']) ? sanitize_key(wp_unslash($_GET['mt_msg'])) : '';
         if (isset(self::MESSAGES[$msg])) {
             [$kind, $text] = self::MESSAGES[$msg];
@@ -141,7 +149,6 @@ final class MT_Admin
             echo '<div class="mtadm mtadm-page"><section class="mtadm-card"><h2>Das Theme MichaThemeV5 ist nicht aktiv</h2>'
                 . '<p>Die Einstellungen gehören zum Theme. Bitte richten Sie das Theme zuerst auf der Info-Seite ein oder aktivieren Sie es unter Design › Themes.</p>'
                 . '<p><a class="mtadm-primary" href="' . esc_url(self::url('info')) . '">Zur Info-Seite</a></p></section></div>';
-            echo self::install_card();
             self::wrap('MichaThemeV5 · Einstellungen', 'settings', (string) ob_get_clean());
 
             return;
@@ -167,19 +174,7 @@ final class MT_Admin
             'presetFormOpen' => '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '"><input type="hidden" name="action" value="mt_apply_preset">' . wp_nonce_field('mt_apply_preset', '_wpnonce', true, false),
             'mediaButtons' => true,
         ]);
-        echo self::install_card();
         self::wrap('MichaThemeV5 · Einstellungen', 'settings', (string) ob_get_clean());
-    }
-
-    // Schalter Aktiv-Meldung (Install-Client), eigenes Formular ausserhalb vom Einstellungs-Formular
-    private static function install_card(): string
-    {
-        $form = class_exists('MT_Install', false) ? MT_Install::settings_html() : '';
-        if ($form === '') {
-            return '';
-        }
-
-        return '<div class="mtadm"><section class="mtadm-card" aria-labelledby="mti-install"><h2 id="mti-install">Datenschutz: Aktiv-Meldung</h2>' . $form . '</section></div>';
     }
 
     public static function handle_save_settings(): void
@@ -255,7 +250,31 @@ final class MT_Admin
         self::back('license', 'lic_format');
     }
 
-    // Plugin-Empfehlungen
+    // Updates und Weitere Plugins = Dashboard vom Baukasten (Info, Updates, Weitere Plugins, Installation melden, Lizenz bleibt aus)
+    // der einzige Schalter "Installation melden" steckt hier, der alte Kasten unter den Einstellungen ist weg
+
+    public static function page_updates(): void
+    {
+        if (!current_user_can('manage_options')) {
+            wp_die('Keine Berechtigung.', '', ['response' => 403]);
+        }
+        echo '<div class="wrap">' . self::nav('updates') . '</div>';
+        try {
+            $list = \Mgd\MichaThemeV5\Kit\Platform\WordPress\Setup::recommendations(MT_Install::PRODUCT, MT_Install::PLATFORM, MT_Catalog::SELF_ID, [], 'MichaThemeV5_WooCommerce');
+            // parent leer = kein eigener Menüpunkt vom Kit, Lizenz aus
+            $dash = \Mgd\MichaThemeV5\Kit\Platform\WordPress\Setup::dashboard(MT_Install::PRODUCT, MT_Install::PLATFORM, MT_PLUGIN_VERSION, 'MichaThemeV5', MT_Plugin::$updater, $list, false, '');
+        } catch (\Throwable $e) {
+            $dash = null;
+        }
+        if ($dash === null) {
+            echo '<div class="wrap"><p>Die Seite konnte gerade nicht geladen werden.</p></div>';
+
+            return;
+        }
+        $dash->page();
+    }
+
+    // Plugin-Empfehlungen (alt, abgeschaltet: nicht mehr im Menü, Handler nicht angemeldet)
 
     public static function page_catalog(): void
     {

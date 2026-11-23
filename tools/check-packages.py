@@ -24,6 +24,8 @@ for kind, name, root in [('plugin', f'michatheme-v5-plugin-{version}.zip', 'mich
             # Install-Client (Free-Lizenz) nur im Plugin, nur die WordPress-Anbindung
             assert all(root + 'includes/install/' + f in files for f in ('InstallClient.php', 'Settings.php', 'CurlTransport.php', 'Platform/WordPress.php'))
             assert not any(n.startswith(root + 'includes/install/Platform/') and n != root + 'includes/install/Platform/WordPress.php' for n in files)
+            # Baukasten (ab 1.6.0): Autoloader, Setup, Dashboard, Updater, Install-Client, Lizenz-Baustein
+            assert all(root + 'includes/' + f in files for f in ('kit-autoload.php', 'class-mt-legacy.php', 'Kit/Platform/WordPress/Setup.php', 'Kit/Platform/WordPress/Dashboard.php', 'Kit/Platform/WordPress/Updater.php', 'Kit/Install/InstallClient.php', 'Kit/Catalog/Recommendations.php', 'Kit/Platform/WordPress/assets/kit-admin.css'))
         else:
             assert not any('/includes/install/' in n for n in files)
     print(name, len(files), 'Dateien geprüft')

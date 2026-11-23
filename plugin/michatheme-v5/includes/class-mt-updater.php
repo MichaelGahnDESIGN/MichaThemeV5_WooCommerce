@@ -1,6 +1,7 @@
 <?php
 defined('ABSPATH') || exit;
 
+// ab 1.6.0 abgeschaltet: boot() wird nicht mehr aufgerufen, Updates macht der Baukasten (includes/Kit). Klasse bleibt, wird getestet
 /**
  * Update-Hinweis wie beim MGD Update Client: Prüfsummen-Datei auf theme.michael-gahn.de, ZIP vom GitHub-Release.
  * Nur Hinweis in der WordPress-Liste, eingespielt wird nur per Klick. SHA-256 und Pfade werden vor dem Entpacken geprüft.

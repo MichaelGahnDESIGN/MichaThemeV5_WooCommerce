@@ -3,6 +3,7 @@ defined('ABSPATH') || exit;
 
 use MichaThemeV5\Plugin\CatalogFeed;
 
+// ab 1.6.0 abgeschaltet (kein Menüpunkt mehr), Weitere Plugins kommt aus dem Baukasten. SELF_ID wird weiter benutzt
 /** Plugin-Empfehlungen: Feed von theme.michael-gahn.de. Fehler sind leise, im Shop (Frontend) wird nie abgerufen. */
 final class MT_Catalog
 {

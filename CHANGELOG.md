@@ -2,6 +2,28 @@
 
 Hier steht, was sich von Version zu Version geändert hat. Ältere Einträge bis 0.6.1 stammen aus der frühen Phase (Pre-Alpha).
 
+## 1.6.0 (24.11.2026)
+
+Das Plugin nutzt jetzt den gemeinsamen Baukasten von Michael Gahn DESIGN. Deine Einstellungen, Farben und dein Lizenzcode bleiben erhalten.
+
+**Neu**
+
+- Neuer Menüpunkt **Updates und Weitere Plugins** mit den Bereichen Info, Updates, Weitere Plugins und Installation melden.
+- Weitere Plugins mit Suche und Filtern. Kostenlose Plugins kannst du mit einem Klick installieren. Sie werden nie von selbst aktiviert.
+- Ein Hinweis erscheint, wenn die installierte Version zu alt ist.
+
+**Geändert**
+
+- Update-Prüfung und Aktiv-Meldung laufen jetzt über den Baukasten. Prüfsumme, Größe und Pfade werden weiter vor der Installation geprüft. Automatische Updates bleiben aus.
+- Der Schalter **Installation melden** steht jetzt nur noch im neuen Dashboard, nicht mehr unten in den Einstellungen. Dein bisheriger Zustand (an oder aus) und deine Installations-ID bleiben gleich.
+- Der Menüpunkt „Plugin-Empfehlungen“ ist durch **Updates und Weitere Plugins** ersetzt.
+- Beim Löschen des Plugins wird die Installation bei der Plattform abgemeldet.
+
+**Wichtig**
+
+- ⚠️ Vor dem Update bitte eine Sicherung von Shop und Datenbank machen.
+- Das Theme und „Theme einrichten“ auf der Info-Seite funktionieren wie bisher.
+
 ## 1.5.1 (23.11.2026)
 
 **Neu**

@@ -155,9 +155,10 @@ check(MT_Install::due() === true && MT_Install::feed() === null, 'Außerhalb vom
 
 // Plugin-Kopf, readme, Deinstallation
 $main = (string) file_get_contents($root . '/michatheme-v5.php');
-$kurz = 'Meldet sich höchstens einmal am Tag bei theme.michael-gahn.de (Plugin, Version, Shopsystem, Domain, zufällige ID). Abschaltbar in den Einstellungen.';
+$kurz = 'Meldet sich höchstens einmal am Tag bei theme.michael-gahn.de (Plugin, Version, Shopsystem, Domain, zufällige ID). Abschaltbar unter Updates und Weitere Plugins.';
 check(str_contains($main, $kurz) && str_contains((string) file_get_contents($root . '/readme.txt'), $kurz), 'Kurztext in Plugin-Kopf und readme.txt');
-check(preg_match("/try \\{\\s*\\\\MichaThemeV5\\\\Plugin\\\\Install\\\\Platform\\\\WordPress::boot\\(__FILE__, 'michatheme-v5-woocommerce', 'woocommerce', MT_PLUGIN_VERSION/", $main) === 1, 'Hauptplugin startet den Client in try/catch mit richtigem Produkt');
+// seit 1.6.0 startet Setup::updater() vom Baukasten den Client (alter Aufruf ist abgeschaltet, siehe tests/bruecke-baukasten.php)
+check(!str_contains($main, 'Install\\Platform\\WordPress::boot(') && preg_match("/Setup::updater\\(__FILE__, 'michatheme-v5-woocommerce', 'woocommerce', MT_PLUGIN_VERSION/", $main) === 1, 'Hauptplugin startet den Client nur noch über den Baukasten mit richtigem Produkt');
 $un = (string) file_get_contents($root . '/uninstall.php');
 check(str_contains($un, "delete_option('" . MT_Install::OPTION . "')") && str_contains($un, "delete_transient('" . MT_Install::NOTICE . "')"), 'Deinstallation entfernt die Daten des Install-Clients');
 $theme = '';

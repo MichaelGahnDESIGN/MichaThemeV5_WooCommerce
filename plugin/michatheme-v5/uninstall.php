@@ -25,6 +25,13 @@ foreach (['cat_fresh', 'cat_good', 'cat_pause', 'cat_last_refresh', 'recheck'] a
     delete_transient('michatheme_v5_' . $t);
 }
 delete_site_transient('michatheme_v5_release');
+// Baukasten: Installation bei der Plattform abmelden + eigene Kit-Optionen weg (muss VOR dem Löschen der Install-Option laufen, sie hält den Schlüssel)
+try {
+    require_once __DIR__ . '/includes/kit-autoload.php';
+    \Mgd\MichaThemeV5\Kit\Platform\WordPress\Setup::uninstall('michatheme-v5-woocommerce', 'woocommerce');
+} catch (\Throwable $e) {
+    // Löschen geht immer durch, auch ohne Netz
+}
 // Install-Client (Aktiv-Meldung): Zustand + Hinweis-Flag weg. Eintrag auf der Plattform räumt die 12-Monats-Löschfrist ab
 delete_option('mgd_install_michatheme_v5_woocommerce');
 delete_transient('mgd_install_notice_michatheme_v5_woocommerce');
