@@ -34,7 +34,8 @@ function mt_license(): LicenseClient
             },
             static function (string $k, array $v, int $ttl): void {
                 set_transient($k, $v, $ttl);
-            }
+            },
+            platform: 'woocommerce'
         );
     }
 

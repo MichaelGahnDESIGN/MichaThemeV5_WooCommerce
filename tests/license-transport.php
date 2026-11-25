@@ -13,7 +13,7 @@ function set_transient(string $key, mixed $value, int $ttl): void { $GLOBALS['ca
 function wp_remote_post(string $url, array $options): array
 {
     $GLOBALS['calls'][] = [$url, $options];
-    return ['status' => 200, 'body' => json_encode(['valid' => true, 'license' => ['tier' => 'pro', 'modules' => []], 'cache_valid_until' => gmdate('c', time() + 3600)])];
+    return ['status' => 200, 'body' => json_encode(['valid' => true, 'license' => ['tier' => 'pro', 'platform' => 'woocommerce', 'kind' => 'theme', 'modules' => []], 'cache_valid_until' => gmdate('c', time() + 3600)])];
 }
 function is_wp_error(mixed $response): bool { return false; }
 function wp_remote_retrieve_body(array $response): string { return $response['body']; }
