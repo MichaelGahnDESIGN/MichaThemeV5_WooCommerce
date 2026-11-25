@@ -3,7 +3,7 @@ Contributors: michaelgahndesign
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 2.1.1
+Stable tag: 2.1.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,6 +18,9 @@ Die Aktiv-Meldung (höchstens einmal am Tag an theme.michael-gahn.de: Plugin, Ve
 Datenschutz: Zur Lizenzprüfung gehen nur Lizenzcode und Domain an https://theme.michael-gahn.de. Die Plugin-Empfehlungen werden nur im Admin geladen. Besucher Ihres Shops sind nicht betroffen.
 
 == Changelog ==
+
+= 2.1.2 =
+* Lizenzprüfung: Plugin-Lizenzen schalten keine Themes mehr frei.
 
 = 2.1.1 =
 * Gemeinsame Verwaltung unter MGD Tools: Einstellungen, Lizenzen und Info als Reiter, Updates, Weitere Plugins und der Schalter „Installation melden“ gemeinsam mit den anderen MGD-Plugins.

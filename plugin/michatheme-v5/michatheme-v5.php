@@ -3,7 +3,7 @@
  * Plugin Name: MGD MichaThemeV5
  * Plugin URI: https://theme.michael-gahn.de/plugins/plugin-michatheme-v5-woocommerce
  * Description: Einstellungsseite, Lizenzverwaltung und Theme-Einrichtung für das Theme MichaThemeV5.
- * Version: 2.1.1
+ * Version: 2.1.2
  * Requires at least: 6.4
  * Requires PHP: 8.1
  * Author: Michael Gahn DESIGN
@@ -15,9 +15,9 @@
 
 defined('ABSPATH') || exit;
 
-define('MT_PLUGIN_VERSION', '2.1.1');
+define('MT_PLUGIN_VERSION', '2.1.2');
 // Theme-Version, die im Plugin-ZIP mitgeliefert wird, und die kleinste Version, mit der das Plugin zusammenarbeitet
-define('MT_PLUGIN_THEME_BUNDLED', '2.1.1');
+define('MT_PLUGIN_THEME_BUNDLED', '2.1.2');
 define('MT_PLUGIN_THEME_MIN', '0.5.0');
 define('MT_PLUGIN_FILE', __FILE__);
 define('MT_PLUGIN_DIR', plugin_dir_path(__FILE__));
