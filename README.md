@@ -2,11 +2,11 @@
 
 Theme von Michael Gahn DESIGN mit Hell-/Dunkelmodus, vielen Optionen und rechtssicherer Ausrichtung für DE und EU.
 
-**Version:** 1.6.0
+**Version:** 2.1.1
 
 ⚠️ Bitte vor jedem Update eine Sicherung von Shop und Datenbank machen. Neue Versionen am besten zuerst in einem Test-Shop ausprobieren.
 
-## Lizenzprüfung (ab Version 0.6.1)
+## Lizenzprüfung (ab Version 2.1.1)
 
 Die Lizenzprüfung läuft nur noch per HTTPS. Der Lizenzcode steht nicht in Adressen (URLs), sondern im Kopfteil der Anfrage. Theme und Plugin immer gemeinsam aktualisieren. [Details und Grenzen](docs/LIZENZTRANSPORT.md).
 
@@ -15,7 +15,7 @@ Die Lizenzprüfung läuft nur noch per HTTPS. Der Lizenzcode steht nicht in Adre
 35 Free-Funktionen sind aufgeführt (fertig oder noch in Arbeit, den Stand zeigt die Liste). Dieses Repo enthält ausschließlich die kostenlosen Funktionen.
 Die vollständige Liste mit Status steht in [`docs/FEATURES.md`](docs/FEATURES.md), offene Punkte in [`TODO.md`](TODO.md).
 
-## Aussehen (ab Version 0.3.0)
+## Aussehen (ab Version 2.1.1)
 
 Hell: Weiß und Hellgrau. Dunkel: Anthrazit. Der Standard-Akzent ist Rot und lässt sich in den Theme-Einstellungen ändern. Rot steht nur bei bedienbaren Dingen (Kaufen-Button, Menüpunkt, Seitenzahl). Alle anderen Buttons sind neutral. Der Hell/Dunkel-Umschalter sitzt standardmäßig in der Kopfzeile.
 
@@ -27,7 +27,7 @@ Eingebunden ist er in der Einstellungsseite des Plugins MichaThemeV5: bei WooCom
 
 Ehrlich gesagt: Die Plugins sind bisher in Test- und Demo-Umgebungen geprüft. Mach vor dem Einsatz in deinem Shop eine Sicherung.
 
-## Icon-Leiste in der Kopfzeile (ab Version 0.4.0)
+## Icon-Leiste in der Kopfzeile (ab Version 2.1.1)
 
 Von links nach rechts: Hell/Dunkel-Schalter, Glocke, Merkliste, Favoriten, Konto, Warenkorb. Die Suche bleibt in der Mitte. Glocke, Merkliste und Favoriten sind unsichtbar, solange nichts drin ist.
 
@@ -38,7 +38,7 @@ Von links nach rechts: Hell/Dunkel-Schalter, Glocke, Merkliste, Favoriten, Konto
 
 Mehr dazu: [`docs/ICON-LEISTE.md`](docs/ICON-LEISTE.md).
 
-## Plugin MichaThemeV5 (ab Version 0.5.0)
+## Plugin MichaThemeV5 (ab Version 2.1.1)
 
 Das Plugin ist die bequeme Einstellungsseite für das Theme. Das Theme läuft auch ohne Plugin, dann stellst du alles wie bisher im Customizer ein.
 
@@ -53,7 +53,7 @@ Datenschutz: Für die Lizenzprüfung gehen nur Lizenzcode und Domain an https://
 
 Verträglichkeit: Das Plugin lädt Skripte und Stile nur auf seinen eigenen Admin-Seiten. Im Shop und in Seitenbaukästen wie Divi oder Elementor tut es nichts.
 
-## Favicon (ab Version 1.5.1)
+## Favicon (ab Version 2.1.1)
 
 Das Favicon ist das kleine Bild im Browser-Tab.
 
@@ -65,7 +65,7 @@ Das Favicon ist das kleine Bild im Browser-Tab.
   4. Veröffentlichen.
 - Entfernst du dein Icon wieder, erscheint automatisch das Logo.
 
-## Datenschutz: Aktiv-Meldung (ab Version 1.5.0, Schalter im neuen Dashboard ab 1.6.0)
+## Datenschutz: Aktiv-Meldung (ab Version 2.1.1, Schalter im neuen Dashboard ab 1.6.0)
 
 Kurz gesagt: Das **Plugin** MichaThemeV5 meldet sich höchstens einmal am Tag bei theme.michael-gahn.de. So wissen wir, wie viele Shops es nutzen, und können Updates bereitstellen.
 
@@ -92,7 +92,7 @@ Kurz gesagt: Das **Plugin** MichaThemeV5 meldet sich höchstens einmal am Tag be
 3. Nimm den Haken bei „Installation bei Michael Gahn DESIGN melden“ weg.
 4. Klicke auf **Speichern**.
 
-Seit Version 1.6.0 gibt es den Schalter nur noch an dieser Stelle. Unten in den Einstellungen steht er nicht mehr.
+Seit Version 2.1.1 gibt es den Schalter nur noch an dieser Stelle. Unten in den Einstellungen steht er nicht mehr.
 
 Danach wird nichts mehr gesendet, und dein Eintrag auf der Plattform wird gelöscht. Plugin und Theme funktionieren genauso weiter wie vorher.
 
@@ -103,7 +103,7 @@ Danach wird nichts mehr gesendet, und dein Eintrag auf der Plattform wird gelös
 - Updates: Das Plugin fragt die Update-Datei höchstens einmal am Tag über dieselbe Meldung ab. Sonst und bei einer Störung nimmt es wie bisher die feste Datei. Die Sicherheitsprüfungen (Prüfsumme, Größe, Pfade, kein automatisches Update) bleiben gleich.
 - Löschst du das Plugin, werden auch die gespeicherten Daten der Aktiv-Meldung entfernt. Einträge ohne Meldung seit 12 Monaten löscht die Plattform selbst.
 
-## Demo-Artikel importieren und entfernen (ab Version 0.6.0)
+## Demo-Artikel importieren und entfernen (ab Version 2.1.1)
 
 Mit einem Klick bekommt dein Test-Shop 16 Beispielartikel in 4 Kategorien (je 3 Platzhalterbilder, ohne Internetzugriff). Voraussetzung: WooCommerce ist aktiv.
 
@@ -132,4 +132,4 @@ Alle rechtlichen Angaben sind technische Hinweise zum Stand der Erstellung und k
 
 ## Paketprüfung für Katalogfreigaben
 
-Der GitHub-Check `packages` baut das uploadfertige Begleitplugin einschließlich Theme und prüft Versionen, die vollständige Theme-Prüfliste und ausgeschlossene Entwicklungsdateien. Er läuft bei Pull Requests, auf `main` und bei neuen `v*`-Tags. Neue Katalogfreigaben benötigen zusätzlich die serverseitige Prüfung des veröffentlichten ZIPs gegen Git und SHA-256. Die bestehende Version 0.6.0 bleibt als bereits abgenommene Bestandsfreigabe erhalten; dieser CI-Nachweis wird nicht rückwirkend behauptet.
+Der GitHub-Check `packages` baut das uploadfertige Begleitplugin einschließlich Theme und prüft Versionen, die vollständige Theme-Prüfliste und ausgeschlossene Entwicklungsdateien. Er läuft bei Pull Requests, auf `main` und bei neuen `v*`-Tags. Neue Katalogfreigaben benötigen zusätzlich die serverseitige Prüfung des veröffentlichten ZIPs gegen Git und SHA-256. Die bestehende Version 2.1.1 bleibt als bereits abgenommene Bestandsfreigabe erhalten; dieser CI-Nachweis wird nicht rückwirkend behauptet.

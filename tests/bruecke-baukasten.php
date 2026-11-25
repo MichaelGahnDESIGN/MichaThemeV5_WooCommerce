@@ -87,9 +87,10 @@ check(!str_contains($main, 'MT_Updater::boot'), 'Alter Updater wird nicht mehr a
 check(!str_contains($main, 'Install\\Platform\\WordPress::boot(') && !str_contains($main, 'MT_Install::boot'), 'Alter Install-Anschluss (boot/ping) läuft nicht doppelt');
 check(!str_contains($admin, "'license', 'catalog_refresh'") && str_contains($admin, '// catalog_refresh ist abgeschaltet'), 'Alte Empfehlungsliste: Handler nicht mehr angemeldet');
 check(!str_contains($admin, 'MT_Install::settings_html') && !str_contains($admin, 'install_card'), 'Alter Schalter unten in den Einstellungen ist weg');
-check(!preg_match("/add_submenu_page\\([^\\n]*SLUGS\\['catalog'\\]/", $admin) && str_contains($admin, "SLUGS['updates']"), 'Menüpunkt Plugin-Empfehlungen ersetzt durch das Dashboard');
-check(str_contains($admin, "Setup::dashboard(MT_Install::PRODUCT, MT_Install::PLATFORM, MT_PLUGIN_VERSION, 'MichaThemeV5', MT_Plugin::\$updater, \$list, false, '')"), 'Dashboard mit Lizenz AUS und ohne eigenen Kit-Menüpunkt');
-check(str_contains($admin, "'MichaThemeV5_WooCommerce'"), 'Eigenes Repo wird aus der Liste ausgeblendet (selfRepo)');
+check(!str_contains($admin, 'add_menu_page') && !str_contains($admin, 'add_submenu_page') && str_contains($admin, 'function page_tools'), 'Kein eigenes Menü mehr, eine Seite mit Reitern unter MGD Tools');
+check(str_contains($main, 'Setup::tools(') && str_contains($main, "'render' => ['MT_Admin', 'page_tools']") && str_contains($main, "'slug' => 'plugin-michatheme-v5-woocommerce'"), 'MGD Tools: Einstellungsseite und Katalog-Kennung eingetragen');
+check(str_contains($main, "'license' => false"), 'MGD Tools: Lizenz-Baustein bleibt aus');
+check(str_contains($main, "'repo' => 'MichaThemeV5_WooCommerce'"), 'Eigenes Repo wird aus der Liste ausgeblendet (repo)');
 check(preg_match("/Setup::updater\\(__FILE__, '" . $PRODUCT . "', 'woocommerce', MT_PLUGIN_VERSION/", $main) === 1, 'Baukasten-Updater im Hauptplugin mit richtigem Produkt');
 check(preg_match("/Setup::cleanupLegacy\\('" . $PRODUCT . "', MT_PLUGIN_VERSION/", $main) === 1, 'cleanupLegacy im Hauptplugin');
 check(preg_match("/Setup::uninstall\\('" . $PRODUCT . "', 'woocommerce'\\)/", $un) === 1, 'uninstall.php ruft Setup::uninstall');

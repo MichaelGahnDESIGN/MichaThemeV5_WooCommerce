@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name: MichaThemeV5
- * Plugin URI: https://theme.michael-gahn.de
- * Description: Übersichtliche Einstellungsseite, Lizenzverwaltung und Plugin-Empfehlungen für das Theme MichaThemeV5. Das Theme funktioniert auch ohne dieses Plugin. Meldet sich höchstens einmal am Tag bei theme.michael-gahn.de (Plugin, Version, Shopsystem, Domain, zufällige ID). Abschaltbar unter Updates und Weitere Plugins.
- * Version: 1.6.0
+ * Plugin Name: MGD MichaThemeV5
+ * Plugin URI: https://theme.michael-gahn.de/plugins/plugin-michatheme-v5-woocommerce
+ * Description: Einstellungsseite, Lizenzverwaltung und Theme-Einrichtung für das Theme MichaThemeV5.
+ * Version: 2.1.1
  * Requires at least: 6.4
  * Requires PHP: 8.1
  * Author: Michael Gahn DESIGN
@@ -15,9 +15,9 @@
 
 defined('ABSPATH') || exit;
 
-define('MT_PLUGIN_VERSION', '1.6.0');
+define('MT_PLUGIN_VERSION', '2.1.1');
 // Theme-Version, die im Plugin-ZIP mitgeliefert wird, und die kleinste Version, mit der das Plugin zusammenarbeitet
-define('MT_PLUGIN_THEME_BUNDLED', '1.6.0');
+define('MT_PLUGIN_THEME_BUNDLED', '2.1.1');
 define('MT_PLUGIN_THEME_MIN', '0.5.0');
 define('MT_PLUGIN_FILE', __FILE__);
 define('MT_PLUGIN_DIR', plugin_dir_path(__FILE__));
@@ -87,12 +87,22 @@ final class MT_Plugin
 
 MT_Plugin::boot();
 
-// Baukasten: Updater + Hinweis + Install-Melder in einem Aufruf. Dashboard-Seite = Menüpunkt "Updates und Weitere Plugins" > MT_Admin
+// Baukasten: Updater, Hinweis, Install-Melder und MGD Tools in einem Rutsch. Menü kommt von MGD Tools, nicht mehr von uns
+use Mgd\MichaThemeV5\Kit\Platform\WordPress\Setup;
+use Mgd\MichaThemeV5\Kit\Platform\WordPress\Tools;
+
 try {
-    MT_Plugin::$updater = \Mgd\MichaThemeV5\Kit\Platform\WordPress\Setup::updater(__FILE__, 'michatheme-v5-woocommerce', 'woocommerce', MT_PLUGIN_VERSION, 'MichaThemeV5', admin_url('admin.php?page=michatheme-v5-updates'));
+    MT_Plugin::$updater = Setup::updater(__FILE__, 'michatheme-v5-woocommerce', 'woocommerce', MT_PLUGIN_VERSION, 'MichaThemeV5', Tools::url());
     // alte Zwischenspeicher weg, 1x pro Version. Kit nimmt nur mgd_ Namen, die michatheme_v5_ Reste räumt MT_Legacy::clean() selbst
-    \Mgd\MichaThemeV5\Kit\Platform\WordPress\Setup::cleanupLegacy('michatheme-v5-woocommerce', MT_PLUGIN_VERSION, MT_Legacy::NAMES);
+    Setup::cleanupLegacy('michatheme-v5-woocommerce', MT_PLUGIN_VERSION, MT_Legacy::NAMES);
     add_action('admin_init', ['MT_Legacy', 'clean']);
+    // Einstellungsseite unter MGD Tools, Seiten-Kennung bleibt michatheme-v5, Reiter Einstellungen/Lizenzen/Info
+    Setup::tools(__FILE__, 'michatheme-v5-woocommerce', 'woocommerce', MT_PLUGIN_VERSION, 'MichaThemeV5', MT_Plugin::$updater, [
+        'slug' => 'plugin-michatheme-v5-woocommerce',
+        'repo' => 'MichaThemeV5_WooCommerce',
+        'settings' => ['page' => 'michatheme-v5', 'legacy' => ['michatheme-v5-license', 'michatheme-v5-updates', 'michatheme-v5-info', 'michatheme-v5-catalog'], 'title' => 'MichaThemeV5', 'cap' => 'manage_options', 'render' => ['MT_Admin', 'page_tools']],
+        'license' => false,
+    ]);
 } catch (\Throwable $e) {
     // Baukasten kaputt > Plugin läuft trotzdem voll
 }

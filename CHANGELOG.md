@@ -2,6 +2,10 @@
 
 Hier steht, was sich von Version zu Version geändert hat. Ältere Einträge bis 0.6.1 stammen aus der frühen Phase (Pre-Alpha).
 
+## [2.1.1] - 2026-11-25
+
+- Gemeinsame Verwaltung unter MGD Tools, einheitliche Darstellung, Icons.
+
 ## 1.6.0 (24.11.2026)
 
 Das Plugin nutzt jetzt den gemeinsamen Baukasten von Michael Gahn DESIGN. Deine Einstellungen, Farben und dein Lizenzcode bleiben erhalten.

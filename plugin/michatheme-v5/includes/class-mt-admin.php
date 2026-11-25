@@ -4,7 +4,7 @@ defined('ABSPATH') || exit;
 use MichaThemeV5\Plugin\{FieldRenderer, PageRenderer};
 
 /**
- * Menü und Seiten: Einstellungen · Lizenzen · Updates und Weitere Plugins (Baukasten-Dashboard) · Info.
+ * Eine Seite unter MGD Tools mit Reitern: Einstellungen · Lizenzen · Info. Updates und Weitere Plugins macht MGD Tools (Baukasten).
  * Jede Aktion: POST erzwingen, Rechte prüfen, Nonce prüfen. Meldungen kommen nur aus einer festen Liste (nie aus der URL).
  */
 final class MT_Admin
@@ -30,29 +30,31 @@ final class MT_Admin
 
     public static function boot(): void
     {
-        add_action('admin_menu', [self::class, 'menu']);
         add_action('admin_enqueue_scripts', [self::class, 'assets']);
         add_action('admin_init', [self::class, 'redirect_after_activation']);
-        add_filter('plugin_action_links_' . plugin_basename(MT_PLUGIN_FILE), [self::class, 'action_links']);
         // catalog_refresh ist abgeschaltet (alte Empfehlungsliste), Weitere Plugins macht das Baukasten-Dashboard
         foreach (['save_settings', 'apply_preset', 'restore_settings', 'license', 'theme_copy', 'theme_activate'] as $a) {
             add_action('admin_post_mt_' . $a, [self::class, 'handle_' . $a]);
         }
     }
 
+    // alle Reiter hängen an einer Seite (page=michatheme-v5), der Reiter kommt über tab=
     public static function url(string $page, array $args = []): string
     {
-        return add_query_arg($args, admin_url('admin.php?page=' . self::SLUGS[$page]));
+        $tab = in_array($page, ['license', 'info'], true) ? ['tab' => $page] : [];
+
+        return add_query_arg($tab + $args, admin_url('admin.php?page=' . self::SLUGS['settings']));
     }
 
-    public static function menu(): void
+    // Seite unter MGD Tools: nimmt den Reiter aus tab= (fester Satz, nie frei aus der URL)
+    public static function page_tools(): void
     {
-        add_menu_page('MichaThemeV5', 'MichaThemeV5', 'manage_options', self::SLUGS['settings'], [self::class, 'page_settings'], 'dashicons-art', 58);
-        add_submenu_page(self::SLUGS['settings'], 'Einstellungen', 'Einstellungen', 'manage_options', self::SLUGS['settings'], [self::class, 'page_settings']);
-        add_submenu_page(self::SLUGS['settings'], 'Lizenzen', 'Lizenzen', 'manage_options', self::SLUGS['license'], [self::class, 'page_license']);
-        // Dashboard vom Baukasten statt alter Plugin-Empfehlungen
-        add_submenu_page(self::SLUGS['settings'], 'Updates und Weitere Plugins', 'Updates und Weitere Plugins', 'manage_options', self::SLUGS['updates'], [self::class, 'page_updates']);
-        add_submenu_page(self::SLUGS['settings'], 'Info', 'Info', 'manage_options', self::SLUGS['info'], [self::class, 'page_info']);
+        $tab = isset($_GET['tab']) ? sanitize_key(wp_unslash($_GET['tab'])) : '';
+        match ($tab) {
+            'license' => self::page_license(),
+            'info' => self::page_info(),
+            default => self::page_settings(),
+        };
     }
 
     public static function action_links(array $links): array
@@ -112,7 +114,7 @@ final class MT_Admin
     private static function nav(string $page): string
     {
         $h = '<nav class="nav-tab-wrapper" aria-label="MichaThemeV5 Bereiche">';
-        foreach (['settings' => 'Einstellungen', 'license' => 'Lizenzen', 'updates' => 'Updates und Weitere Plugins', 'info' => 'Info'] as $k => $lab) {
+        foreach (['settings' => 'Einstellungen', 'license' => 'Lizenzen', 'info' => 'Info'] as $k => $lab) {
             $h .= '<a class="nav-tab' . ($k === $page ? ' nav-tab-active' : '') . '" href="' . esc_url(self::url($k)) . '"' . ($k === $page ? ' aria-current="page"' : '') . '>' . esc_html($lab) . '</a>';
         }
 

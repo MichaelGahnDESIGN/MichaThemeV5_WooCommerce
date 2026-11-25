@@ -155,8 +155,11 @@ check(MT_Install::due() === true && MT_Install::feed() === null, 'Außerhalb vom
 
 // Plugin-Kopf, readme, Deinstallation
 $main = (string) file_get_contents($root . '/michatheme-v5.php');
-$kurz = 'Meldet sich höchstens einmal am Tag bei theme.michael-gahn.de (Plugin, Version, Shopsystem, Domain, zufällige ID). Abschaltbar unter Updates und Weitere Plugins.';
-check(str_contains($main, $kurz) && str_contains((string) file_get_contents($root . '/readme.txt'), $kurz), 'Kurztext in Plugin-Kopf und readme.txt');
+// ab 2.1.1: Beschreibung ein Satz ohne Datenschutztext (der steht unter MGD Tools)
+preg_match('/^ \* Description: (.+)$/m', $main, $dm);
+$desc = $dm[1] ?? '';
+check($desc !== '' && preg_match('/[.!?]\s+\S/u', $desc) !== 1 && !preg_match('/theme\.michael-gahn\.de|meldet sich|datenschutz|zufällige id/iu', $desc), 'Plugin-Kopf: Beschreibung ein Satz ohne Datenschutztext');
+check(str_contains($main, 'Plugin Name: MGD MichaThemeV5'), 'Plugin-Name beginnt mit MGD');
 // seit 1.6.0 startet Setup::updater() vom Baukasten den Client (alter Aufruf ist abgeschaltet, siehe tests/bruecke-baukasten.php)
 check(!str_contains($main, 'Install\\Platform\\WordPress::boot(') && preg_match("/Setup::updater\\(__FILE__, 'michatheme-v5-woocommerce', 'woocommerce', MT_PLUGIN_VERSION/", $main) === 1, 'Hauptplugin startet den Client nur noch über den Baukasten mit richtigem Produkt');
 $un = (string) file_get_contents($root . '/uninstall.php');
