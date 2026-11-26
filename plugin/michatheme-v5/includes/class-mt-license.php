@@ -92,7 +92,10 @@ final class MT_License
                 },
                 static function (string $k, array $v, int $ttl): void {
                     set_transient($k, $v, $ttl);
-                }
+                },
+                172800,
+                null,
+                'woocommerce'
             );
         }
 

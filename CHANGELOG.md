@@ -2,6 +2,10 @@
 
 Hier steht, was sich von Version zu Version geändert hat. Ältere Einträge bis 0.6.1 stammen aus der frühen Phase (Pre-Alpha).
 
+## [2.1.4] - 2026-11-26
+
+- Begleit-Plugin: Lizenzprüfung gleicht jetzt die Plattform ab (wie das Theme).
+
 ## [2.1.2] - 2026-11-25
 
 - Lizenzprüfung: Plugin-Lizenzen schalten keine Themes mehr frei.

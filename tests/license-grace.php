@@ -23,7 +23,7 @@ foreach ($files as $f) {
         if (str_ends_with($c, '\\LicenseClient')) { $class = $c; }
     }
     if ($class === null) { throw new RuntimeException('Klasse fehlt in ' . $f); }
-    $plat = str_starts_with($f, "inc/") ? "woocommerce" : (str_starts_with($f, "src/") ? "shopware6" : "jtl5");
+    $plat = (str_starts_with($f, "inc/") || str_starts_with($f, "plugin/")) ? "woocommerce" : (str_starts_with($f, "src/") ? "shopware6" : "jtl5");
     $cache = []; $calls = 0; $now = 1_000_000; $up = true;
     $http = static function (string $url, array $req) use (&$calls, &$up, &$now): ?array {
         $calls++;

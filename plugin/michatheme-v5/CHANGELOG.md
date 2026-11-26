@@ -1,5 +1,9 @@
 # Änderungen am Plugin MichaThemeV5 (WooCommerce)
 
+## 2.1.4
+
+- Begleit-Plugin: Die Lizenzprüfung gleicht jetzt die Plattform ab, genau wie das Theme.
+
 ## 2.1.2
 
 - Lizenzprüfung: Plugin-Lizenzen schalten keine Themes mehr frei.
